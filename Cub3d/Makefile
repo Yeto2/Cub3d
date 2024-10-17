@@ -6,50 +6,21 @@
 #    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/09/16 21:36:08 by yessemna         ###   ########.fr        #
+#    Updated: 2024/10/16 06:03:11 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# CC = cc
-# CFLAGS = -Wall -Wextra -Werror -Ofast
-# LDFLAGS = -lmlx -framework OpenGL -framework AppKit
-# MANDATORY = mandatory
-# NAME = cub3d
-
-# SRC = $(MANDATORY)/test.c	\
-
-# OBJ = $(SRC:.c=.o)
-
-
-# all: $(NAME)
-
-# $(NAME): $(OBJS)
-# 	$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
-
-# %.o : %.c $(MANDATORY)/cube3d.h
-# 	@$(CC) $(CFLAGS) -c $< -o $@
-
-# clean:
-# 	rm -rf $(OBJ_DIR)/*.o
-
-# fclean: clean
-# 	rm -f $(NAME)
-
-# re: fclean all
-
-# .PHONY: all clean fclean re
 
 # Compiler and flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Ofast
 LDFLAGS = -lmlx -framework OpenGL -framework AppKit
-
+OBJ_DIR = obj
 # Directories
 MANDATORY = mandatory
 NAME = cub3d
 
 # Source files
-SRC = $(MANDATORY)/test.c
+SRC = $(MANDATORY)/main.c
 OBJ = $(SRC:$(MANDATORY)/%.c=$(MANDATORY)/%.o)
 
 # Default rule
