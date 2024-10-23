@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/20 08:56:36 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/23 22:56:20 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <unistd.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <stdarg.h>
+# define HEXA "0123456789abcdef"
+# define HEXA_MAJ "0123456789ABCDEF"
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
@@ -41,6 +44,7 @@ typedef struct s_player
 {
     int x;
     int y;
+    char dir;
 }   t_player;
 
 typedef struct s_data
@@ -59,6 +63,23 @@ typedef struct s_data
     
 }   t_data;
 
+typedef struct s_list
+{
+    void			*content;
+    struct s_list	*next;
+}	t_list;
+
+// parsing
+
+int fill_map_data(t_data *data);
+int skip_spc_check(char *line);
+int valid_letter(char *line);
+int check_if_valid(t_data *data);
+int prepare_data(t_data *data);
+void init_data_vars(t_data **data);
+void check_extention(const char *file);
+int count_lines(t_data *data);
+void handle_color(char *color, char type, t_data **data);
 
 // tools
 size_t  ft_strlen(const char *s);
@@ -73,6 +94,7 @@ void	ft_bzero(void *s, size_t n);
 void	ft_putendl_fd(char *s, int fd);
 char	*ft_strdup(const char *s);
 int	is_space(char c);
+int ft_atoi(const char *str);
 
 // ft_open
 
@@ -107,4 +129,13 @@ void	*g_malloc(size_t size, t_call call);
 void	add_back(t_col	**head, t_col *new);
 t_col	*last_node(t_col **head);
 t_col	*new_node(void	*ptr);
+
+//ft_printf
+int		ft_printf(const char *format, ...);
+void	ft_putchar(char c, int *count);
+void	ft_putstr(char *str, int *count);
+void	ft_putnbr(int n, int *count);
+void	ft_put_u_nbr(unsigned int n, int *count);
+void	ft_hexa(unsigned int n, int *count, char *HEXA_);
+void	ft_hexap(unsigned long long n, int *count, char *HEXA_);
 #endif

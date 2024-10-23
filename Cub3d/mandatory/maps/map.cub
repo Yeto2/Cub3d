@@ -1,8 +1,7 @@
 
       
-SO ./images/cube.png
+ SO ./images/cube.png
 WE ./images/cube.png
-        
 EA ./images/cube.png
 NO ./images/cube.png
 

@@ -6,7 +6,7 @@
 #    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/10/20 08:57:06 by yessemna         ###   ########.fr        #
+#    Updated: 2024/10/23 23:06:38 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,11 @@ SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_n
 		$(MANDATORY)/utils/ft_strlen.c $(MANDATORY)/utils/ft_strncmp.c $(MANDATORY)/utils/ft_substr.c \
 		$(MANDATORY)/utils/ft_open/ft_open_tools.c $(MANDATORY)/utils/ft_open/ft_open.c $(MANDATORY)/utils/ft_malloc/ft_malloc_tools.c \
 		$(MANDATORY)/utils/ft_malloc/ft_malloc.c $(MANDATORY)/utils/strjoin.c $(MANDATORY)/utils/ft_bzero.c $(MANDATORY)/utils/ft_calloc.c\
-		$(MANDATORY)/utils/ft_putendl.c $(MANDATORY)/utils/ft_strdup.c $(MANDATORY)/utils/tools.c\
-		
+		$(MANDATORY)/utils/ft_putendl.c $(MANDATORY)/utils/ft_strdup.c $(MANDATORY)/utils/ft_atoi.c $(MANDATORY)/utils/tools.c\
+		$(MANDATORY)/utils/printf/ft_hexa.c $(MANDATORY)/utils/printf/ft_printf.c $(MANDATORY)/utils/printf/ft_putchar.c \
+		$(MANDATORY)/utils/printf/ft_putnbr.c $(MANDATORY)/utils/printf/ft_putstr.c $(MANDATORY)/parsing/checkers.c \
+		$(MANDATORY)/parsing/fill_map_data.c $(MANDATORY)/parsing/handlers.c \
+
 OBJ = $(SRC:$(MANDATORY)/%.c=$(MANDATORY)/%.o)
 
 all: $(NAME)
