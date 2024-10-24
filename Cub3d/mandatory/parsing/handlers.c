@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:35:01 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/23 23:07:34 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/24 21:06:32 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int check_if_valid(t_data *data)
 int prepare_data(t_data *data)
 {
     int i = 0;
+    int j = 0;
     int len = 0;
 
     while ((data)->data_map[i])
@@ -48,25 +49,26 @@ int prepare_data(t_data *data)
             len++;
         i++;
     }
-    int j = 0;
     (data)->map_dtls = g_malloc(sizeof(char *) * (len + 1), MALLOC);
     if (!(data)->map_dtls)
         printf("malloc failed\n"); // error
     i = 0;
-    while ((data)->data_map[i])
+    while ((data)->data_map[i] )
     {
         if (!valid_letter((data)->data_map[i]))
+        {
+            len++;
             (data)->map_dtls[j++] = ft_strdup((data)->data_map[i]);
+        }
         i++;
     }
-    (data)->map_dtls[i] = NULL;
+    data->map_dtls[j] = NULL;
     return 0;
 }
 
 void handle_color(char *color, char type, t_data **data)
 {
     int i = 0;
-    // int j = 0;
     int r = 0;
     int g = 0;
     int b = 0;

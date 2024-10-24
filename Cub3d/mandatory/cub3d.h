@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/23 22:56:20 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:57:34 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_player
     char dir;
 }   t_player;
 
-typedef struct s_data
+typedef struct s_data 
 {
     t_player    player;
     t_color     floor;
@@ -80,6 +80,9 @@ void init_data_vars(t_data **data);
 void check_extention(const char *file);
 int count_lines(t_data *data);
 void handle_color(char *color, char type, t_data **data);
+int WSNECF10(char c);
+int dir(char c);
+char	*join_char(char *str, char c);
 
 // tools
 size_t  ft_strlen(const char *s);

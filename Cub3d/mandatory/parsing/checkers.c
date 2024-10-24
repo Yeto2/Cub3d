@@ -6,11 +6,25 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:21:30 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/23 20:24:38 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:49:55 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int dir(char c)
+{
+    if (c == 'A' || c == 'S' || c == 'D' || c == 'W')
+        return 1;
+    return 0;
+}
+
+int WSNECF10(char c)
+{
+    if (c == 'S' || c == 'W' || c == 'E' || c == 'N' || c == 'C' || c == 'F' || c == '1' || c == '0' || c == ' ')
+        return 1;
+    return 0;
+}
 
 int WSNECF1(char c)
 {
@@ -21,7 +35,7 @@ int WSNECF1(char c)
 
 int WSNE_CF1(char *line)
 {
-    if (line[0] == 'S' || line[0] == 'W' || line[0] == 'E' || line[0] == 'N' || line[0] == ' ' || line[0] == 'C' || line[0] == 'F' || line[0] == '1')
+    if (line[0] == 'S' || line[0] == 'W' || line[0] == 'E' || line[0] == 'N' || line[0] == ' ' || line[0] == 'C' || line[0] == 'F' || line[0] == '1' || line[0] == '0')
         return 1;
     return 0;
 }
