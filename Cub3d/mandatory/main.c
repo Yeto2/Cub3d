@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/24 20:16:05 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/25 21:41:28 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 void prepare(char *line, t_data **data)
 {
-    // int i = 0;
+    int i = 0;
     // int j = 0;
     (void)data;
     char **tmp;
 
         tmp = ft_split(line, ' ');
+        while (tmp[i])
+            i++;
+        if (i > 2)
+        {
+            ft_printf("Error\n");
+            exit(1);
+        }
+            
         if(!tmp)
             ft_printf("Error\n");
         if(tmp[0][0] == 'S' && tmp[0][1] == 'O')
@@ -47,10 +55,7 @@ void prepare(char *line, t_data **data)
             (*data)->no = ft_strdup(tmp[1]);
         }
         else if (tmp[0][0] == 'F' || tmp[0][0] == 'C')
-        {
             handle_color(tmp[1], tmp[0][0], data);
-        }
-
         free(tmp);
 }
 int first_and_last(char *first, char *last)
@@ -86,7 +91,7 @@ int is_rounded(t_data **data)
     while((*data)->map.map[i] && i < last)
     {
         j = 0;
-        while((*data)->map.map[i][j] == ' ')//<-------------
+        while((*data)->map.map[i][j] == ' ')
             j++;
         if((*data)->map.map[i][j] != '1' || (*data)->map.map[i][ft_strlen((*data)->map.map[i]) - 1] != '1')
             return 1;
@@ -136,7 +141,7 @@ int check_map_validity(t_data **data)
             {
                 if (player)
                     return 1;
-                player = 1;
+                player++;
                 (*data)->player.x = j;
                 (*data)->player.y = i;
                 (*data)->player.dir = (*data)->map.map[i][j];
@@ -146,6 +151,8 @@ int check_map_validity(t_data **data)
         }
         i++;
     }
+    if (player > 1 || player == 0)
+        return 1;
     i = 0;
     while ((*data)->map.map[i])
     {
@@ -226,5 +233,25 @@ int main(int ac, char const *av[])
     if (prepare_data(&data))
         return (ft_printf("Error\n"), 1);
     esolate_check(&data);
+    
+    int i = 0;
+    printf("player x = %d\n", data.player.x);
+    printf("player y = %d\n", data.player.y);
+    printf("player dir = %c\n", data.player.dir);
+    printf("floor r: %d, g: %d, b: %d\n", data.floor.red, data.floor.green, data.floor.blue);
+    printf("ciel r: %d, g: %d, b: %d\n", data.ciel.red, data.ciel.green, data.ciel.blue);
+    printf("no = %s\n", data.no);
+    printf("so = %s\n", data.so);
+    printf("ea = %s\n", data.ea);
+    printf("we = %s\n", data.we);
+    printf("map path = %s\n", data.map_path);
+    printf("map_h = %d\n", data.map.map_h);
+    printf("map_w = %d\n", data.map.map_w);
+    
+    while (data.map.map[i])
+    {
+        ft_printf("%s\n", data.map.map[i]);
+        i++;
+    }
     return 0;
 }

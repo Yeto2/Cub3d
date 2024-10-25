@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:35:01 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/24 21:06:32 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:09:55 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ void handle_color(char *color, char type, t_data **data)
     int g = 0;
     int b = 0;
     char **tmp;
-    (void)type;
-    (void)data;
 
     tmp = ft_split(color, ',');
     if(!tmp)
