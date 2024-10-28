@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:35:01 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/25 20:09:55 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:19:24 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ int check_if_valid(t_data *data)
     while (data->data_map[i])
     {
         if (data->data_map[i][0] == '1' || data->data_map[i][0] == '0')
-        {
             i++;
-        }
         else if (data->data_map[i][0] == ' ')
         {
             if (skip_spc_check(data->data_map[i]))
@@ -45,19 +43,21 @@ int prepare_data(t_data *data)
 
     while ((data)->data_map[i])
     {
-        if (!valid_letter((data)->data_map[i]))
+        if (!valid_letter((data)->data_map[i]) || !(data)->data_map[i][0])
             len++;
+        else if (!null_check((data)->data_map[i]))
+            print_err("Invalid map data");
         i++;
     }
     (data)->map_dtls = g_malloc(sizeof(char *) * (len + 1), MALLOC);
     if (!(data)->map_dtls)
         printf("malloc failed\n"); // error
     i = 0;
-    while ((data)->data_map[i] )
+    while ((data)->data_map[i])
     {
         if (!valid_letter((data)->data_map[i]))
         {
-            len++;
+            // len++; // why?
             (data)->map_dtls[j++] = ft_strdup((data)->data_map[i]);
         }
         i++;
@@ -76,11 +76,11 @@ void handle_color(char *color, char type, t_data **data)
 
     tmp = ft_split(color, ',');
     if(!tmp)
-        ft_printf("Error\n");
+        print_err("Invalid color");
     while (tmp[i])
     {
-        if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
-            ft_printf("Error\n");
+        if (is_alpha(tmp[i]))
+            print_err("Invalid color");
         if (i == 0)
             r = ft_atoi(tmp[i]);
         else if (i == 1)
@@ -89,6 +89,8 @@ void handle_color(char *color, char type, t_data **data)
             b = ft_atoi(tmp[i]);
         i++;
     }
+    if (i != 3)
+        print_err("Invalid color");
     if (type == 'F')
     {
         (*data)->ciel.red = r;

@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:17:54 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/23 23:00:39 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:15:41 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int fill_map_data(t_data *data)
     i = 0;
     fd = open((data)->map_path, O_RDONLY, 0666);
     if (fd == -1)
-        ft_printf("Error\n"); // error
+        print_err("cannt open rhe map file");
     (data)->data_map = g_malloc(sizeof(char *) * (count_lines(data) + 1), MALLOC);
     if (!(data)->data_map)
-        printf("malloc failed\n"); // error
+        print_err("malloc failed");
     line = get_next_line(fd);
     if (!line)
-        printf("empty file\n"); // error
+        print_err("empty file");
     while (line)
     {
         last_line = line;

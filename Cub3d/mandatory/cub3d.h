@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/24 17:57:34 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:13:31 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void handle_color(char *color, char type, t_data **data);
 int WSNECF10(char c);
 int dir(char c);
 char	*join_char(char *str, char c);
-
+int is_alpha(char *c);
 // tools
 size_t  ft_strlen(const char *s);
 char    **ft_split(char const *s, char c);
@@ -98,6 +98,9 @@ void	ft_putendl_fd(char *s, int fd);
 char	*ft_strdup(const char *s);
 int	is_space(char c);
 int ft_atoi(const char *str);
+void    print_err(char *err);
+int WSNE_CF1(char *line);
+int null_check(char *line);
 
 // ft_open
 

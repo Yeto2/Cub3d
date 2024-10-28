@@ -1,8 +1,8 @@
-SO ./images/cube.png
+        SO  ./images/cube.png      
 WE     ./images/cube.png
 EA ./images/cube.png
 C 0,0,10
-F                          a,25,123
+F                          0,25,255          
 NO ./images/cube.png
 
 

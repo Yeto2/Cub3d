@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:21:30 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/24 20:49:55 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:19:06 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,21 @@ int WSNE_CF1(char *line)
 int skip_spc_check(char *line)
 {
     int i = 0;
-
+    
     while (is_space(line[i]))
-    {
         i++;
-    }
     if (!WSNECF1(line[i]))
+        return (1);
+    return (0);
+}
+
+int null_check(char *line)
+{
+    int i = 0;
+    
+    while (is_space(line[i]))
+        i++;
+    if (!line[i])
         return (1);
     return (0);
 }
