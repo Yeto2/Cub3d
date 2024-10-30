@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/28 11:13:31 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/30 23:07:02 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,14 @@ void handle_color(char *color, char type, t_data **data);
 int WSNECF10(char c);
 int dir(char c);
 char	*join_char(char *str, char c);
-int is_alpha(char *c);
+void esolate_check(t_data *data);
+int is_zero_surrounded(t_data **data);
+int is_rounded(t_data **data);
+void prepare(char *line, t_data **data);
+int check_map_validity(t_data **data);
+
 // tools
+int is_alpha(char *c);
 size_t  ft_strlen(const char *s);
 char    **ft_split(char const *s, char c);
 int     ft_strcmp(const char *s1, const char *s2);
@@ -99,9 +105,9 @@ char	*ft_strdup(const char *s);
 int	is_space(char c);
 int ft_atoi(const char *str);
 void    print_err(char *err);
-int WSNE_CF1(char *line);
+int WSNE_CF1(char *ln);
 int null_check(char *line);
-
+int ft_isalpha(int c);
 // ft_open
 
 typedef struct s_fd_col

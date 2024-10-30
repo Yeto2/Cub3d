@@ -6,7 +6,7 @@
 #    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/10/26 20:45:07 by yessemna         ###   ########.fr        #
+#    Updated: 2024/10/30 23:27:30 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_n
 		$(MANDATORY)/utils/printf/ft_hexa.c $(MANDATORY)/utils/printf/ft_printf.c $(MANDATORY)/utils/printf/ft_putchar.c \
 		$(MANDATORY)/utils/printf/ft_putnbr.c $(MANDATORY)/utils/printf/ft_putstr.c $(MANDATORY)/parsing/checkers.c \
 		$(MANDATORY)/parsing/fill_map_data.c $(MANDATORY)/parsing/handlers.c $(MANDATORY)/utils/join_char.c $(MANDATORY)/utils/print_err.c \
+		$(MANDATORY)/parsing/esolate_check.c $(MANDATORY)/parsing/is_rounded.c $(MANDATORY)/parsing/prepare.c \
+		$(MANDATORY)/parsing/map_validity.c $(MANDATORY)/parsing/checkers_.c \
 
 OBJ = $(SRC:$(MANDATORY)/%.c=$(MANDATORY)/%.o)
 
