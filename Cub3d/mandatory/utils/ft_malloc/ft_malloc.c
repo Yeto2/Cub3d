@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 01:36:32 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/17 16:08:38 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:44:39 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ void	*g_malloc(size_t size, t_call call)
 		clear_all(&head);
 	return (NULL);
 }
-

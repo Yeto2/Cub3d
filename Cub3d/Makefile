@@ -6,15 +6,16 @@
 #    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/10/30 23:27:30 by yessemna         ###   ########.fr        #
+#    Updated: 2024/11/04 17:18:32 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc #-fsanitize=address -g
-CFLAGS = -Wall -Wextra -Werror -Ofast
-LDFLAGS = -lmlx -framework OpenGL -framework AppKit
+CC = cc -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -Iinclude
+MLX_LIB = MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 OBJ_DIR = obj
 MANDATORY = mandatory
+BUILD = MLX42/build
 NAME = cub3d
 
 SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_next_line.c $(MANDATORY)/utils/ft_strcmp.c \
@@ -26,14 +27,20 @@ SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_n
 		$(MANDATORY)/utils/printf/ft_putnbr.c $(MANDATORY)/utils/printf/ft_putstr.c $(MANDATORY)/parsing/checkers.c \
 		$(MANDATORY)/parsing/fill_map_data.c $(MANDATORY)/parsing/handlers.c $(MANDATORY)/utils/join_char.c $(MANDATORY)/utils/print_err.c \
 		$(MANDATORY)/parsing/esolate_check.c $(MANDATORY)/parsing/is_rounded.c $(MANDATORY)/parsing/prepare.c \
-		$(MANDATORY)/parsing/map_validity.c $(MANDATORY)/parsing/checkers_.c \
+		$(MANDATORY)/parsing/map_validity.c $(MANDATORY)/parsing/checkers_.c $(MANDATORY)/utils/ft_strchr.c \
 
 OBJ = $(SRC:$(MANDATORY)/%.c=$(MANDATORY)/%.o)
 
-all: $(NAME)
+all: $(BUILD) $(NAME) 
+
+$(BUILD):
+	@if [ ! -d MLX42/build ]; then \
+		(cd MLX42 && cmake -B build);\
+	fi
+	@make -C MLX42/build
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
+	@$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) -o $(NAME)
 
 $(MANDATORY)/%.o: $(MANDATORY)/%.c $(MANDATORY)/cube3d.h
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -43,7 +50,8 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -rf MLX42/build
 
 re: fclean all
 
-# .PHONY: all clean fclean re
+.PHONY: all clean fclean re

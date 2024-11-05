@@ -6,79 +6,76 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:14:21 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/25 12:45:57 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:06:31 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int  count_words(char const *s, char c)
+static size_t	ft_countword(char const *s, char c)
 {
-    int count;
-    int i;
+	size_t	count;
+	size_t	i;
 
-    count = 0;
-    i = 0;
-    while (s[i])
-    {
-        if (s[i] != c)
-        {
-            count++;
-            while (s[i] && s[i] != c)
-                i++;
-        }
-        else
-            i++;
-    }
-    return (count);
+	count = 0;
+	i = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i])
+			count++;
+		while (s[i] != c && s[i])
+			i++;
+	}
+	return (count);
 }
 
-static char *ft_strndup(const char *s, size_t n)
+char	**free_tab(char **lst, int i)
 {
-    char *str;
-    size_t i;
-
-    i = 0;
-    str = (char *)malloc(sizeof(char) * (n + 1));
-    if (!str)
-        return (NULL);
-    while (s[i] && i < n)
-    {
-        str[i] = s[i];
-        i++;
-    }
-    str[i] = '\0';
-    return (str);
+	while (i--)
+		free(lst[i]);
+	free(lst);
+	return (NULL);
 }
 
-char    **ft_split(char const *s, char c)
+size_t	set_world_len(const char *s, char c)
 {
-    char    **tab;
-    int     i;
-    int     j;
-    int     k;
+	size_t	word_len;
 
-    i = 0;
-    j = 0;
-    tab = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
-    if (!tab)
-        return (NULL);
-    while (s[i])
-    {
-        if (s[i] != c)
-        {
-            k = 0;
-            while (s[i + k] && s[i + k] != c)
-                k++;
-            tab[j] = ft_strndup(s + i, k);
-            if (!tab[j])
-                return (NULL);
-            j++;
-            i += k;
-        }
-        else
-            i++;
-    }
-    tab[j] = NULL;
-    return (tab);
+	if (!s)
+		return (0);
+	if (!ft_strchr(s, c))
+		word_len = ft_strlen(s);
+	else
+		word_len = ft_strchr(s, c) - s;
+	return (word_len);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**lst;
+	int		i;
+
+	if (!s)
+		return (0);
+	lst = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
+	if (!s || !lst)
+		return (0);
+	i = 0;
+	while (*s)
+	{
+		while (*s == c && *s)
+			s++;
+		if (*s)
+		{
+			lst[i] = ft_substr(s, 0, set_world_len(s, c));
+			if (!lst[i])
+				return (free_tab(lst, i));
+			s += set_world_len(s, c);
+			i++;
+		}
+	}
+	lst[i] = NULL;
+	return (lst);
 }

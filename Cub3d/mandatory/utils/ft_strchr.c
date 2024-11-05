@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkers_.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 23:13:22 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/01 12:56:47 by yessemna         ###   ########.fr       */
+/*   Created: 2024/11/01 16:02:03 by yessemna          #+#    #+#             */
+/*   Updated: 2024/11/01 16:08:24 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	null_check(char *line)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	unsigned char	cr;
+	char			*str;
+	int				i;
 
 	i = 0;
-	while (is_space(line[i]))
+	cr = (unsigned char)c;
+	str = (char *)s;
+	while (str[i])
+	{
+		if (str[i] == cr)
+			return (str + i);
 		i++;
-	if (!line[i])
-		return (1);
-	return (0);
-}
-
-int	dir(char c)
-{
-	if (c == 'A' || c == 'S' || c == 'D' || c == 'W')
-		return (1);
+	}
+	if (str[i] == cr)
+		return (str + i);
 	return (0);
 }

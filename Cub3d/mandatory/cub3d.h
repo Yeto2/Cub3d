@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/30 23:07:02 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:49:07 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,81 +20,105 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <stdarg.h>
+# include <math.h>
+# include "../MLX42/include/MLX42/MLX42.h"
 # define HEXA "0123456789abcdef"
 # define HEXA_MAJ "0123456789ABCDEF"
+# define S_W 800 // screen width
+# define S_H 400 // screen height
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
+#define TILE_SIZE 64
+
+
 
 typedef struct s_map
 {
-    char **map;
-    int map_w;
-    int map_h;
-}   t_map;
+	char	**map;
+	int		map_w;
+	int		map_h;
+}	t_map;
 
 typedef struct s_color
 {
-    int red;
-    int green;
-    int blue;
-}   t_color;
+	int	red;
+	int	green;
+	int	blue;
+}	t_color;
 
 typedef struct s_player
 {
-    int x;
-    int y;
-    char dir;
-}   t_player;
+	int		x;
+	int		y;
+	char	dir;
+}	t_player;
 
-typedef struct s_data 
+
+typedef struct s_mlx
 {
-    t_player    player;
-    t_color     floor;
-    t_color     ciel;
-    t_map       map;
-    char        *no;
-    char        *so;
-    char        *ea;
-    char        *map_path;
-    char        **data_map;
-    char        **map_dtls;
-    char        *we;
-    
-}   t_data;
+	mlx_image_t		*img;	// the image
+	mlx_t			*mlx_p;	// the mlx pointer
+}	t_mlx;
+
+typedef struct s_data
+{
+	t_player	player;
+	t_color		floor;
+	t_color		ciel;
+	t_map		map;
+	t_mlx		mlx;
+	char		*no;
+	char		*so;
+	char		*ea;
+	char		*map_path;
+	char		**data_map;
+	char		**map_dtls;
+	char		*we;
+}	t_data;
 
 typedef struct s_list
 {
-    void			*content;
-    struct s_list	*next;
+	void			*content;
+	struct s_list	*next;
 }	t_list;
+
+typedef struct s_var
+{
+	char	**tmp;
+	int		i;
+	int		r;
+	int		g;
+	int		b;
+}	t_var;
+
+
 
 // parsing
 
-int fill_map_data(t_data *data);
-int skip_spc_check(char *line);
-int valid_letter(char *line);
-int check_if_valid(t_data *data);
-int prepare_data(t_data *data);
-void init_data_vars(t_data **data);
-void check_extention(const char *file);
-int count_lines(t_data *data);
-void handle_color(char *color, char type, t_data **data);
-int WSNECF10(char c);
-int dir(char c);
+void	init_data_vars(t_data **data);
+void	check_extention(const char *file);
+void	handle_color(char *color, char type, t_data **data);
+int		fill_map_data(t_data *data);
+int		skip_spc_check(char *line);
+int		valid_letter(char *line);
+int		check_if_valid(t_data *data);
+int		prepare_data(t_data *data);
+int		count_lines(t_data *data);
+int		wsnecf10(char c);
+int		dir(char c);
 char	*join_char(char *str, char c);
-void esolate_check(t_data *data);
-int is_zero_surrounded(t_data **data);
-int is_rounded(t_data **data);
-void prepare(char *line, t_data **data);
-int check_map_validity(t_data **data);
-
+void	esolate_check(t_data *data);
+int		is_zero_surrounded(t_data **data);
+int		is_rounded(t_data **data);
+void	prepare(char *line, t_data **data);
+int		check_map_validity(t_data **data);
 // tools
-int is_alpha(char *c);
-size_t  ft_strlen(const char *s);
-char    **ft_split(char const *s, char c);
-int     ft_strcmp(const char *s1, const char *s2);
-int     ft_strncmp(const char *s1, const char *s2, size_t n);
+int		is_alpha(char *c);
+size_t	ft_strlen(const char *s);
+char	**ft_split(char const *s, char c);
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2, int len);
@@ -102,12 +126,13 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 void	ft_putendl_fd(char *s, int fd);
 char	*ft_strdup(const char *s);
-int	is_space(char c);
-int ft_atoi(const char *str);
-void    print_err(char *err);
-int WSNE_CF1(char *ln);
-int null_check(char *line);
-int ft_isalpha(int c);
+int		is_space(char c);
+int		ft_atoi(const char *str);
+void	print_err(char *err);
+int		wsne_cf1(char *ln);
+int		null_check(char *line);
+int		ft_isalpha(int c);
+char	*ft_strchr(const char *s, int c);
 // ft_open
 
 typedef struct s_fd_col
@@ -135,7 +160,6 @@ typedef enum e_call
 	MALLOC
 }	t_call;
 
-
 void	clear_all(t_col **head);
 void	*g_malloc(size_t size, t_call call);
 void	add_back(t_col	**head, t_col *new);
@@ -143,8 +167,8 @@ t_col	*last_node(t_col **head);
 t_col	*new_node(void	*ptr);
 
 //ft_printf
-int		ft_printf(const char *format, ...);
 void	ft_putchar(char c, int *count);
+int		ft_printf(const char *format, ...);
 void	ft_putstr(char *str, int *count);
 void	ft_putnbr(int n, int *count);
 void	ft_put_u_nbr(unsigned int n, int *count);
