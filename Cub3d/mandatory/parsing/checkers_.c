@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 23:13:22 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/01 12:56:47 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:01:47 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	null_check(char *line)
 
 int	dir(char c)
 {
-	if (c == 'A' || c == 'S' || c == 'D' || c == 'W')
+	if (c == 'E' || c == 'S' || c == 'N' || c == 'W')
 		return (1);
 	return (0);
 }

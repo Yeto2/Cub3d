@@ -6,11 +6,11 @@
 #    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/11/04 17:18:32 by yessemna         ###   ########.fr        #
+#    Updated: 2024/11/11 11:48:54 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc -fsanitize=address -g
+CC = cc #-fsanitize=address -g
 CFLAGS = -Wall -Wextra -Werror -Iinclude
 MLX_LIB = MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 OBJ_DIR = obj

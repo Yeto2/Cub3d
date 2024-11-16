@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/05 17:49:07 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:46:17 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_player
 typedef struct s_mlx
 {
 	mlx_image_t		*img;	// the image
+	mlx_image_t		*img_p;
+	mlx_image_t		*img_m;
 	mlx_t			*mlx_p;	// the mlx pointer
 }	t_mlx;
 

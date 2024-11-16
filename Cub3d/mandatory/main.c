@@ -6,17 +6,17 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/05 18:25:25 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:10:47 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void draw_player(mlx_image_t *img, int player_x, int player_y) {
-    int radius =9;
+    int radius = 9;
 	int x = -radius;
 	int y = -radius;
-	
+
 	while (y <= radius)
 	{
 		x = -radius;
@@ -75,36 +75,74 @@ void draw_map(mlx_image_t *img, t_data *data)
 	}
 }
 
+uint32_t	get_rgba(int r, int g, int b, int a)
+{
+	return (r << 24 | g << 16 | b << 8 | a);
+}
+
+void	clear_img(mlx_image_t *img)
+{
+	uint32_t i = 0;
+	uint32_t j = 0;
+	while (i < img->height)
+	{
+		j = 0;
+		while (j < img->width)
+		{
+			mlx_put_pixel(img, j, i, get_rgba(0, 0, 0, 0));
+			j++;
+		}
+		i++;
+	}
+}
+
 void ft_keypress(void *param)
 {
 	t_data *data = param;
 	
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_W))
-		printf("Wwawawawawa\n");
+	{
+		data->player.y -= 5;
+	}
+	else if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_S))
+	{
+		data->player.y += 5;
+	}
+	else if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_A))
+	{
+		data->player.x -= 5;
+	}
+	else if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_D))
+	{
+		data->player.x += 5;
+	}
+	// printf("--------> mlx_img = %p\n", data->mlx.img_m);
+	clear_img(data->mlx.img_p);
+	draw_player(data->mlx.img_p, data->player.x, data->player.y);
 }
 
 void start_game(t_data *data)
 {
-
-	mlx_image_t *img_player;
-	mlx_image_t *img_map;
-
 	data->mlx.mlx_p = mlx_init(S_W, S_H, "Cub3d", 0);
 	
-	img_player = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
-	img_map = mlx_new_image(data->mlx.mlx_p,S_W , S_H);
+	data->mlx.img_p = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
+	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p,S_W , S_H);
 	
-	draw_map(img_map, data);
+	draw_map(data->mlx.img_m, data);
 	
-	int width = round((float)(img_map->width) / data->map.map_w);
-	int height = round((float)(img_map->height) / data->map.map_h);
+	int width = round((float)((data->mlx.img_m)->width) / data->map.map_w);
+	int height = round((float)((data->mlx.img_m)->height) / data->map.map_h);
 
-	draw_player(img_player, data->player.x * width, data->player.y * height);
+	data->player.x = (data->player.x * width) + (width / 2);
+	data->player.y = (data->player.y * height);
+	draw_player(data->mlx.img_p, data->player.x, data->player.y);
 	
+	
+	// mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 0,0);
+	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_p, 0,0);
 	mlx_loop_hook(data->mlx.mlx_p, ft_keypress, data);
-	
-	mlx_image_to_window(data->mlx.mlx_p, img_map, 0,0);
-	mlx_image_to_window(data->mlx.mlx_p, img_player, 0,0);
+	//  0x60400008e810
+	//  0x60400008c810
 	mlx_loop(data->mlx.mlx_p);
 }
 
@@ -124,6 +162,25 @@ int main(int ac, char const *av[])
 		return (ft_printf("Error\n"), 1);
 	esolate_check(&data);
 	start_game(&data);
+	
+	int	i = 0;
+	
+	//print map
+	while (i < data.map.map_h)
+	{
+		printf("%s\n", data.map.map[i]);
+		i++;
+	}
+
+	printf("data.map_path = %s\n", data.map_path);
+	printf("data.no = %s\n", data.no);
+	printf("data.so = %s\n", data.so);
+	printf("data.ea = %s\n", data.ea);
+	printf("data.we = %s\n", data.we);
+	printf("data.player.x = %d\n", data.player.x);
+	printf("data.player.y = %d\n", data.player.y);
+	printf("data.map.map_w = %d\n", data.map.map_w);
+	printf("data.map.map_h = %d\n", data.map.map_h);
 
 	return 0;
 }
