@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
+#    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/11/11 11:48:54 by yessemna         ###   ########.fr        #
+#    Updated: 2024/11/17 14:45:08 by lamhal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc #-fsanitize=address -g
+CC = cc -g -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror -Iinclude
 MLX_LIB = MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 OBJ_DIR = obj
@@ -28,6 +28,7 @@ SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_n
 		$(MANDATORY)/parsing/fill_map_data.c $(MANDATORY)/parsing/handlers.c $(MANDATORY)/utils/join_char.c $(MANDATORY)/utils/print_err.c \
 		$(MANDATORY)/parsing/esolate_check.c $(MANDATORY)/parsing/is_rounded.c $(MANDATORY)/parsing/prepare.c \
 		$(MANDATORY)/parsing/map_validity.c $(MANDATORY)/parsing/checkers_.c $(MANDATORY)/utils/ft_strchr.c \
+		$(MANDATORY)/raycast/bresnham.c $(MANDATORY)/raycast/draw_map.c  
 
 OBJ = $(SRC:$(MANDATORY)/%.c=$(MANDATORY)/%.o)
 

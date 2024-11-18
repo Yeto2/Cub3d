@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/16 16:46:17 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:36:20 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ typedef struct s_color
 	int	blue;
 }	t_color;
 
+enum deriction
+{
+	up,
+	dwn,
+	right,
+	left
+};
+
+typedef	struct s_cor
+{
+	int	x;
+	int	y;
+}	t_cor;
+
 typedef struct s_player
 {
 	int		x;
@@ -77,6 +91,8 @@ typedef struct s_data
 	char		**data_map;
 	char		**map_dtls;
 	char		*we;
+	int			clr;
+	int			scale;
 }	t_data;
 
 typedef struct s_list
@@ -176,4 +192,12 @@ void	ft_putnbr(int n, int *count);
 void	ft_put_u_nbr(unsigned int n, int *count);
 void	ft_hexa(unsigned int n, int *count, char *HEXA_);
 void	ft_hexap(unsigned long long n, int *count, char *HEXA_);
+
+// reycasting
+
+// bresnhamm
+void	draw_line(t_cor a, t_cor b, t_data *data);
+void    draw_map(t_data *data);
+
+
 #endif
