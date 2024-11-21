@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/17 17:36:02 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/11/20 15:12:39 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,44 +117,45 @@ void ft_keypress(void *param)
 	{
 		data->player.x += 5;
 	}
-	printf("--------> mlx_img = %p\n", data->mlx.img_m);
-	clear_img(data->mlx.img_p);
-	draw_player(data->mlx.img_p, data->player.x, data->player.y);
+	// printf("--------> mlx_img = %p\n", data->mlx.img_m);
+	// clear_img(data->mlx.img_p);
+	// draw_player(data->mlx.img_p, data->player.x, data->player.y);
 }
 
-void start_game(t_data *data)
-{
-	// t_cor a;
-	// t_cor b;
+// void start_game(t_data *data)
+// {
+// 	// t_cor a;
+// 	// t_cor b;
 
-	// a.x = -1;
-	// a.y = 10;
-	// b.x = 50;
-	// b.y = 10;
-	// data->clr = 0x000000FF;
-	data->mlx.mlx_p = mlx_init(S_W, S_H, "Cub3d", 0);
+// 	// a.x = -1;
+// 	// a.y = 10;
+// 	// b.x = 50;
+// 	// b.y = 10;
+// 	// data->clr = 0x000000FF;
+// 	data->mlx.mlx_p = mlx_init(S_W, S_H, "Cub3d", 0);
 	
-	data->mlx.img_p = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
-	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p,S_W , S_H);
+// 	data->mlx.img_p = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
+// 	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p,S_W , S_H);
 	
-	// draw_line(a, b , data);
-	draw_map(data);
+// 	// draw_line(a, b , data);
+// 	draw_map(data);
 	
 	
-	// int width = round((float)((data->mlx.img_m)->width) / data->map.map_w);
-	//int height = round((float)((data->mlx.img_m)->height) / data->map.map_h);
+// 	// int width = round((float)((data->mlx.img_m)->width) / data->map.map_w);
+// 	//int height = round((float)((data->mlx.img_m)->height) / data->map.map_h);
 
-	data->player.x = (data->player.x * data->scale) + (data->scale / 2);
-	data->player.y = (data->player.y * data->scale) + (data->scale / 2);
-	draw_player(data->mlx.img_p, data->player.x, data->player.y);
+// 	data->player.x = (data->player.x * data->scale) + (data->scale / 2);
+// 	data->player.y = (data->player.y * data->scale) + (data->scale / 2);
+// 	draw_player(data->mlx.img_p, data->player.x, data->player.y);
 	
-	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 0,0);
-	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_p, 0,0);
-	mlx_loop_hook(data->mlx.mlx_p, ft_keypress, data);
-	//  0x60400008e810
-	//  0x60400008c810
-	mlx_loop(data->mlx.mlx_p);
-}
+// 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 0,0);
+// 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_p, 0,0);
+// 	mlx_loop_hook(data->mlx.mlx_p, ft_keypress, data);
+// 	//  0x60400008e810
+// 	//  0x60400008c810
+// 	mlx_loop(data->mlx.mlx_p);
+// }
+
 
 int main(int ac, char const *av[])
 {

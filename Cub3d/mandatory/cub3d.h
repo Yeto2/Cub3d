@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/18 14:36:20 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/11/20 15:49:54 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # define HEXA "0123456789abcdef"
 # define HEXA_MAJ "0123456789ABCDEF"
-# define S_W 800 // screen width
-# define S_H 400 // screen height
+# define S_W 2000 // screen width
+# define S_H 1200 // screen height
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
-#define TILE_SIZE 64
+# define TILE_SIZE 64
 
 
 
@@ -72,7 +72,7 @@ typedef struct s_player
 typedef struct s_mlx
 {
 	mlx_image_t		*img;	// the image
-	mlx_image_t		*img_p;
+	mlx_image_t		*img_r;
 	mlx_image_t		*img_m;
 	mlx_t			*mlx_p;	// the mlx pointer
 }	t_mlx;
@@ -93,6 +93,9 @@ typedef struct s_data
 	char		*we;
 	int			clr;
 	int			scale;
+	float		ang;
+	int			ray_dst;
+	int			ver;
 }	t_data;
 
 typedef struct s_list
@@ -196,8 +199,9 @@ void	ft_hexap(unsigned long long n, int *count, char *HEXA_);
 // reycasting
 
 // bresnhamm
-void	draw_line(t_cor a, t_cor b, t_data *data);
-void    draw_map(t_data *data);
-
+void		draw_line(t_cor a, t_cor b, t_data *data);
+void		draw_map(t_data *data);
+uint32_t	get_rgba(int r, int g, int b, int a);
+void		start_game(t_data *data);
 
 #endif
