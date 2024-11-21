@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:00:10 by lamhal            #+#    #+#             */
-/*   Updated: 2024/11/21 09:27:01 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/11/21 14:39:10 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_player   pos_in_map(t_player pl)
 	return (pl);
 }
 
-float	set_angle(t_player pl)
+double	set_angle(t_player pl)
 {
-	float	ang;
+	double	ang;
 
 	ang = 0;
 	if (pl.dir == 'N')
@@ -35,7 +35,7 @@ float	set_angle(t_player pl)
 	return (ang);
 }
 
-float	ft_normalize(float ang)
+double	ft_normalize(double ang)
 {
 	if (ang < 0)
 		ang += 2 * M_PI;
@@ -59,14 +59,14 @@ int	hitt_wall(t_cor inter, t_data *data)
 	return (1);
 }
 
-int	ray_datiction_dwn(float ang)
+int	ray_datiction_dwn(double ang)
 {
 	if (ang > 0 && ang < M_PI)
 		return (1);
 	return (0);
 }
 
-int	ray_dariction_right(float ang)
+int	ray_dariction_right(double ang)
 {
 	if (ang >= 0 && ang < M_PI / 2)
 		return (1);
@@ -75,7 +75,7 @@ int	ray_dariction_right(float ang)
 	return (0);
 }
 
-void	siting_up_steps(int	*x, int *y, float ang)
+void	siting_up_steps(int	*x, int *y, double ang)
 {
 	if (ray_datiction_dwn(ang))
 		*y = abs(*y);
@@ -87,7 +87,7 @@ void	siting_up_steps(int	*x, int *y, float ang)
 		*x = -abs(*x);
 }
 
-t_cor	get_first_intesaction(t_player pl, float ang)
+t_cor	get_first_intesaction(t_player pl, double ang)
 {
 	t_cor	inter;
 
@@ -98,7 +98,7 @@ t_cor	get_first_intesaction(t_player pl, float ang)
 	return (inter);
 }
 
-float	find_horiznatal_inter(t_player pl, float ang, t_data *data)
+double	find_horiznatal_inter(t_player pl, double ang, t_data *data)
 {
 	t_cor	inter;
 	int		x_step;
@@ -117,7 +117,7 @@ float	find_horiznatal_inter(t_player pl, float ang, t_data *data)
 }
 
 
-t_cor	get_first_intesaction1(t_player pl, float ang)
+t_cor	get_first_intesaction1(t_player pl, double ang)
 {
 	t_cor	inter;
 
@@ -129,7 +129,7 @@ t_cor	get_first_intesaction1(t_player pl, float ang)
 	return (inter);
 }
 
-float	find_vertical_inter(t_player pl, float ang, t_data *data)
+float	find_vertical_inter(t_player pl, double ang, t_data *data)
 {
 	t_cor	inter;
 	int		x_step;
@@ -164,7 +164,7 @@ t_cor	find_pixel(int hght)
 	return (pxl);	
 }
 
-void	render(t_data *data, float ray, int i)
+void	render(t_data *data, double ray, int i)
 {
 	int	wall_hght;
 	int	dst;
@@ -199,17 +199,17 @@ void	render(t_data *data, float ray, int i)
 void	ray_cast(t_data	*data)
 {
 	int		i;
-	float	first_ray;
-	float	fov;
-	float	v_inter;
-	float	h_inter;
+	double	first_ray;
+	double	fov;
+	double	v_inter;
+	double	h_inter;
 	
 	fov = M_PI / 3;
 	i = -1;
-	data->ver = 0;
 	first_ray = data->ang - fov / 2;
 	while (++i < S_W)
 	{
+		data->ver = 0;
 		first_ray = ft_normalize(first_ray);
 		v_inter = find_vertical_inter(data->player, first_ray, data);
 		h_inter = find_horiznatal_inter(data->player, first_ray, data);
@@ -230,6 +230,7 @@ void	start_game(t_data *data)
 	data->mlx.mlx_p = mlx_init(S_W, S_H, "Cub3d", 0);
 	data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
 	data->ang = set_angle(data->player);
+	data->ang += 0.5;
 	data->ang = ft_normalize(data->ang);
 	data->player = pos_in_map(data->player);
 	// printf("c ==>  %c\n", data->map.map[3][1]);
