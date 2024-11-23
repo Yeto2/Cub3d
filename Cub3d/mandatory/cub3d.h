@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/20 15:49:54 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/11/21 14:46:13 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_data
 	char		*we;
 	int			clr;
 	int			scale;
-	float		ang;
+	double		ang;
 	int			ray_dst;
 	int			ver;
 }	t_data;
