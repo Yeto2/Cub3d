@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 17:00:10 by lamhal            #+#    #+#             */
-/*   Updated: 2024/11/21 14:39:10 by lamhal           ###   ########.fr       */
+/*   Created: 2024/11/24 15:33:41 by lamhal            #+#    #+#             */
+/*   Updated: 2024/11/25 16:06:06 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 
 t_player   pos_in_map(t_player pl)
 {
-	pl.x = pl.x * TILE_SIZE + (TILE_SIZE / 2);
-	pl.y = pl.y * TILE_SIZE + (TILE_SIZE / 2);
-	return (pl);
+	t_player	tmp;
+	tmp.x = pl.x * TILE_SIZE + (TILE_SIZE / 2);
+	tmp.y = pl.y * TILE_SIZE + (TILE_SIZE / 2);
+	return (tmp);
+}
+
+double	ft_normalize(double ang)
+{
+	if (ang < 0)
+		ang += 2 * M_PI;
+	if (ang >= 2 * M_PI)
+		ang -= 2 * M_PI;
+	return (ang);
 }
 
 double	set_angle(t_player pl)
@@ -32,29 +42,23 @@ double	set_angle(t_player pl)
 		ang = M_PI / 2;
 	else if (pl.dir == 'w')
 		ang = M_PI;
-	return (ang);
-}
-
-double	ft_normalize(double ang)
-{
-	if (ang < 0)
-		ang += 2 * M_PI;
-	if (ang >= 2 * M_PI)
-		ang -= 2 * M_PI;
+	ang = ft_normalize(ang);
 	return (ang);
 }
 
 
-int	hitt_wall(t_cor inter, t_data *data)
+int	hitt_wall(double i, double j, t_data *data)
 {
-	inter.x /= TILE_SIZE;
-	inter.y /= TILE_SIZE;
-	if (inter.x < 0 || inter.y < 0)
+	int	x;
+	int	y;
+	
+	x = i / TILE_SIZE;
+	y = j / TILE_SIZE;
+	if (x < 0 || y < 0)
 		return (0);
-	if (inter.x >= data->map.map_w || inter.y >= data->map.map_h)
+	if (x >= data->map.map_w || y >= data->map.map_h)
 		return (0);
-	// printf("x = %d y = %d \n", inter.x, inter.y);
-	if (data->map.map[inter.y][inter.x] =='1')
+	if (data->map.map[y][x] =='1')
 		return (0);
 	return (1);
 }
@@ -75,21 +79,21 @@ int	ray_dariction_right(double ang)
 	return (0);
 }
 
-void	siting_up_steps(int	*x, int *y, double ang)
+void	siting_up_steps(double	*x, double *y, double ang)
 {
 	if (ray_datiction_dwn(ang))
-		*y = abs(*y);
+		*y = fabs(*y);
 	else
-		*y = -abs(*y);
+		*y = -fabs(*y);
 	if (ray_dariction_right(ang))
-		*x = abs(*x);
+		*x = fabs(*x);
 	else
-		*x = -abs(*x);
+		*x = -fabs(*x);
 }
 
-t_cor	get_first_intesaction(t_player pl, double ang)
+t_pos	get_first_intesaction(t_player pl, double ang)
 {
-	t_cor	inter;
+	t_pos	inter;
 
 	inter.y = floor(pl.y / TILE_SIZE) * TILE_SIZE;
 	if (ang > 0 && ang < M_PI)
@@ -100,15 +104,19 @@ t_cor	get_first_intesaction(t_player pl, double ang)
 
 double	find_horiznatal_inter(t_player pl, double ang, t_data *data)
 {
-	t_cor	inter;
-	int		x_step;
-	int		y_step;
+	t_pos	inter;
+	double	x_step;
+	double	y_step;
+	int		pixl;
 
+	pixl = 1;
+	if (ray_datiction_dwn(ang))
+		pixl = -1;
 	inter = get_first_intesaction(pl, ang);
 	y_step = TILE_SIZE;
 	x_step = TILE_SIZE / tan(ang);
 	siting_up_steps(&x_step, &y_step, ang);
-	while (hitt_wall(inter, data))
+	while (hitt_wall(inter.x, inter.y - pixl, data))
 	{
 		inter.x += x_step;
 		inter.y += y_step;
@@ -116,10 +124,9 @@ double	find_horiznatal_inter(t_player pl, double ang, t_data *data)
 	return (sqrt(pow(inter.x - pl.x, 2) + pow(inter.y - pl.y, 2)));
 }
 
-
-t_cor	get_first_intesaction1(t_player pl, double ang)
+t_pos	get_first_intesaction1(t_player pl, double ang)
 {
-	t_cor	inter;
+	t_pos	inter;
 
 	inter.x = floor(pl.x / TILE_SIZE) * TILE_SIZE ;
 	if ((ang >= 0 && ang < M_PI / 2)
@@ -131,15 +138,19 @@ t_cor	get_first_intesaction1(t_player pl, double ang)
 
 float	find_vertical_inter(t_player pl, double ang, t_data *data)
 {
-	t_cor	inter;
-	int		x_step;
-	int		y_step;
+	t_pos	inter;
+	double		x_step;
+	double		y_step;
+	int			pixl;
 
+	pixl = 1;
+	if (ray_dariction_right(ang))
+		pixl = -1;
 	inter = get_first_intesaction1(pl, ang);
 	x_step = TILE_SIZE;
 	y_step = TILE_SIZE * tan(ang);
 	siting_up_steps(&x_step, &y_step, ang);
-	while (hitt_wall(inter, data))
+	while (hitt_wall(inter.x - pixl, inter.y, data))
 	{
 		inter.x += x_step;
 		inter.y += y_step;
@@ -147,52 +158,25 @@ float	find_vertical_inter(t_player pl, double ang, t_data *data)
 	return (sqrt(pow(inter.x - pl.x, 2) + pow(inter.y - pl.y, 2)));
 }
 
-t_cor	find_pixel(int hght)
+void    render_rays(t_data *data, double ang)
 {
-	t_cor	pxl;
-	
-	if (hght > S_H)
-	{
-		pxl.x = 0;
-		pxl.y = S_H;
-	}
-	else
-	{
-		pxl.x = S_H / 2 - hght / 2;
-		pxl.y = S_H / 2 + hght / 2;
-	}
-	return (pxl);	
-}
+    t_pos ray;
+    t_pos step;
+    int pixl;
 
-void	render(t_data *data, double ray, int i)
-{
-	int	wall_hght;
-	int	dst;
-	t_cor	pxl;
-	int	j;
-
-	// (void)ray;
-	// printf("top %d bottom %d\n", pxl.x , pxl.y);
-	data->ray_dst *= cos(ray - data->ang);
-	// printf("ray_dst1 ===>%d\n", data->ray_dst);
-	// printf("%d %d\n",  S_W, S_H);
-	//exit (0);
-	dst = S_H / (tan(M_PI / 6) * 2);
-	// printf("dst %d\n", dst);
-	wall_hght = TILE_SIZE * dst / data->ray_dst;
-	// printf("wall_hgt %d\n", wall_hght);
-	pxl = find_pixel(wall_hght);
-	j = -1;
-	while (++j < S_H)
+    ray.x = data->player.x * data->unite;
+	ray.y = data->player.y * data->unite;
+	step.x = cos(ang) * data->ray_dst * data->unite;
+	step.y = sin(ang) * data->ray_dst * data->unite;
+	pixl = data->ray_dst * data->unite;
+	step.x /= data->ray_dst * data->unite;
+	step.y /= data->ray_dst * data->unite;
+	while (pixl >= 0)
 	{
-		if (j < pxl.x)
-			mlx_put_pixel(data->mlx.img_r, i, j, 0x0000FFFF);
-		else if (j <= pxl.y && data->ver)
-			mlx_put_pixel(data->mlx.img_r, i, j, 0xFFFF00FF);
-		else if (j <= pxl.y)
-			mlx_put_pixel(data->mlx.img_r, i, j, 0x00FF00FF);
-		// else
-			// mlx_put_pixel(data->mlx.img_r, i, j, 0x00FF00FF);
+		mlx_put_pixel(data->mlx.img_m, ray.x, ray.y, 0xFFFF00FF);
+		ray.x += step.x;
+		ray.y += step.y;
+		--pixl;
 	}
 }
 
@@ -207,7 +191,7 @@ void	ray_cast(t_data	*data)
 	fov = M_PI / 3;
 	i = -1;
 	first_ray = data->ang - fov / 2;
-	while (++i < S_W)
+	while (++i < 300)
 	{
 		data->ver = 0;
 		first_ray = ft_normalize(first_ray);
@@ -220,27 +204,11 @@ void	ray_cast(t_data	*data)
 			data->ray_dst = h_inter;
 			data->ver = 1;
 		}
-		render(data, first_ray, i);
-		first_ray += fov / S_W;
+		render_rays(data, first_ray);
+		// printf("ray dst %f\n", data->ray_dst);
+		// render(data, first_ray, i);
+		first_ray += fov / 300;
 	}
 }
 
-void	start_game(t_data *data)
-{
-	data->mlx.mlx_p = mlx_init(S_W, S_H, "Cub3d", 0);
-	data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
-	data->ang = set_angle(data->player);
-	data->ang += 0.5;
-	data->ang = ft_normalize(data->ang);
-	data->player = pos_in_map(data->player);
-	// printf("c ==>  %c\n", data->map.map[3][1]);
-	// exit(0);
-	ray_cast(data);
-	// int i = 15;
-	// int j = 15;
-	// while (j++ < 100)
-	// 	mlx_put_pixel(data->mlx.img_r, i, j, get_rgba(data->ciel.red,
-	// 			data->ciel.green, data->ciel.blue, 0));
-	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_r, 0,0);
-	mlx_loop(data->mlx.mlx_p);
-}
+

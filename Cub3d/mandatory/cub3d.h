@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/21 14:46:13 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/11/25 12:01:31 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # define HEXA "0123456789abcdef"
 # define HEXA_MAJ "0123456789ABCDEF"
-# define S_W 2000 // screen width
-# define S_H 1200 // screen height
+# define S_W 800 // screen width
+# define S_H 400 // screen height
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
-# define TILE_SIZE 64
+#define TILE_SIZE 64
 
 
 
@@ -61,10 +61,17 @@ typedef	struct s_cor
 	int	y;
 }	t_cor;
 
+typedef	struct s_pos
+{
+	double	x;
+	double	y;
+}	t_pos;
+
+
 typedef struct s_player
 {
-	int		x;
-	int		y;
+	double		x;
+	double		y;
 	char	dir;
 }	t_player;
 
@@ -74,12 +81,15 @@ typedef struct s_mlx
 	mlx_image_t		*img;	// the image
 	mlx_image_t		*img_r;
 	mlx_image_t		*img_m;
+	mlx_image_t		*img_p;
 	mlx_t			*mlx_p;	// the mlx pointer
 }	t_mlx;
 
 typedef struct s_data
 {
 	t_player	player;
+	t_player	tmp_pl;
+	t_player	tmp_pl1;
 	t_color		floor;
 	t_color		ciel;
 	t_map		map;
@@ -92,9 +102,10 @@ typedef struct s_data
 	char		**map_dtls;
 	char		*we;
 	int			clr;
-	int			scale;
+	double		scale;
+	double		unite;
 	double		ang;
-	int			ray_dst;
+	double		ray_dst;
 	int			ver;
 }	t_data;
 
@@ -199,9 +210,14 @@ void	ft_hexap(unsigned long long n, int *count, char *HEXA_);
 // reycasting
 
 // bresnhamm
-void		draw_line(t_cor a, t_cor b, t_data *data);
-void		draw_map(t_data *data);
-uint32_t	get_rgba(int r, int g, int b, int a);
-void		start_game(t_data *data);
+void	draw_line(t_cor a, t_cor b, t_data *data, int stuts);
+void    draw_map(t_data *data);
+void	start_game(t_data *data);
+void	ray_cast(t_data	*data);
+// void	start_game1(t_data *data);
+t_player   pos_in_map(t_player pl);
+double	ft_normalize(double ang);
+double	set_angle(t_player pl);
+
 
 #endif
