@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:35:01 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/12 13:02:26 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:23:51 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	handle_color(char *color, char type, t_data **data)
 	if (var.i != 3)
 		print_err("Invalid color");
 	if (type == 'F')
-		ciel(data, &var.r, &var.g, &var.b);
-	else if (type == 'C')
 		flooor(data, &var.r, &var.g, &var.b);
+	else if (type == 'C')
+		ciel(data, &var.r, &var.g, &var.b);
 	free(var.tmp);
 }

@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/23 16:04:29 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/11/29 12:24:49 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void init_textures(t_data *data)
+{
+	data->textures.so = set_png_texture(data, data->so);
+	data->textures.no = set_png_texture(data, data->no);
+	data->textures.ea = set_png_texture(data, data->ea);
+	data->textures.we = set_png_texture(data, data->we);
+}
+
 
 int main(int ac, char const *av[])
 {
@@ -27,6 +36,7 @@ int main(int ac, char const *av[])
 	if (prepare_data(&data))
 		return (ft_printf("Error\n"), 1);
 	esolate_check(&data);
+	init_textures(&data);
 	start_game(&data);
 
 	

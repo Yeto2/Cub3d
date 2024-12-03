@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
+#    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/11/24 17:14:27 by lamhal           ###   ########.fr        #
+#    Updated: 2024/12/01 14:21:15 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc -g -fsanitize=address
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -Wall -Wextra -Werror -O3 -Iinclude
 MLX_LIB = MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 OBJ_DIR = obj
 MANDATORY = mandatory
@@ -43,7 +43,7 @@ $(BUILD):
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) -o $(NAME)
 
-$(MANDATORY)/%.o: $(MANDATORY)/%.c $(MANDATORY)/cube3d.h
+$(MANDATORY)/%.o: $(MANDATORY)/%.c $(MANDATORY)/cub3d.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

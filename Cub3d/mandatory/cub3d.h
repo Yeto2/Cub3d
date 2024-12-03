@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/25 12:01:31 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/01 22:21:41 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # define HEXA "0123456789abcdef"
 # define HEXA_MAJ "0123456789ABCDEF"
-# define S_W 800 // screen width
-# define S_H 400 // screen height
+# define S_W 1300 // screen width
+# define S_H 800 // screen height
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
-#define TILE_SIZE 64
+# define TILE_SIZE 64
+# define mov_speed 20
 
 
 
@@ -75,7 +76,6 @@ typedef struct s_player
 	char	dir;
 }	t_player;
 
-
 typedef struct s_mlx
 {
 	mlx_image_t		*img;	// the image
@@ -84,6 +84,14 @@ typedef struct s_mlx
 	mlx_image_t		*img_p;
 	mlx_t			*mlx_p;	// the mlx pointer
 }	t_mlx;
+
+typedef struct s_textures
+{
+	mlx_texture_t	*no;
+	mlx_texture_t	*so;
+	mlx_texture_t	*we;
+	mlx_texture_t	*ea;
+}	t_textures;
 
 typedef struct s_data
 {
@@ -107,6 +115,16 @@ typedef struct s_data
 	double		ang;
 	double		ray_dst;
 	int			ver;
+	int			ray_x;
+	
+	int			wall_hght;
+	int			top_pixel;
+	int			bottom_pixel;
+	double			v_inter;
+	double			h_inter;
+	int 			offsetx;
+	mlx_texture_t	*texture;
+	t_textures		textures;
 }	t_data;
 
 typedef struct s_list
@@ -127,7 +145,8 @@ typedef struct s_var
 
 
 // parsing
-
+uint32_t	get_coller(int	r, int g, int b, int a);
+mlx_texture_t	*set_png_texture(t_data *data, char *path);
 void	init_data_vars(t_data **data);
 void	check_extention(const char *file);
 void	handle_color(char *color, char type, t_data **data);
@@ -218,6 +237,8 @@ void	ray_cast(t_data	*data);
 t_player   pos_in_map(t_player pl);
 double	ft_normalize(double ang);
 double	set_angle(t_player pl);
+int	ray_datiction_dwn(double ang);
+int	ray_dariction_right(double ang);
 
 
 #endif

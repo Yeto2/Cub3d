@@ -1,9 +1,9 @@
-        SO  ./images/cube.png      
-WE     ./images/cube.png
-EA ./images/cube.png
+        SO  ./mandatory/images/walls/_the_scream.png
+WE    ./mandatory/images/walls/_the_scream.png
+EA ./mandatory/images/walls/_the_scream.png
 C 0,0,10
 F                          0,25,255          
-NO ./images/cube.png
+NO ./mandatory/images/walls/_the_scream.png
 
 
 11111111111111111111111111111111111
