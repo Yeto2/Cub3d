@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/29 12:24:49 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:59:15 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void init_textures(t_data *data)
 	data->textures.ea = set_png_texture(data, data->ea);
 	data->textures.we = set_png_texture(data, data->we);
 }
-
 
 int main(int ac, char const *av[])
 {
@@ -38,6 +37,7 @@ int main(int ac, char const *av[])
 	esolate_check(&data);
 	init_textures(&data);
 	start_game(&data);
+	// set_player(&data);
 
 	
 	// int	i = 0;
@@ -57,6 +57,7 @@ int main(int ac, char const *av[])
 	// printf("data.player.y = %d\n", data.player.y);
 	// printf("data.map.map_w = %d\n", data.map.map_w);
 	// printf("data.map.map_h = %d\n", data.map.map_h);
+
 
 	return 0;
 }

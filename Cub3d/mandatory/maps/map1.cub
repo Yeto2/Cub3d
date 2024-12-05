@@ -2,7 +2,7 @@ SO ./mandatory/images/walls/s.png
 
 WE     ./mandatory/images/walls/w.png
 
-EA ./mandatory/images/walls/c.png
+EA ./mandatory/images/walls/e.png
 
 C 139,0,0
 F                          70,70,70

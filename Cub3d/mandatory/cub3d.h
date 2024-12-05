@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/01 22:21:41 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:58:40 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # endif
 # define TILE_SIZE 64
 # define mov_speed 20
-
+#define NUM_FRAMES 5 // Adjust based on your frames count
 
 
 typedef struct s_map
@@ -125,6 +125,9 @@ typedef struct s_data
 	int 			offsetx;
 	mlx_texture_t	*texture;
 	t_textures		textures;
+	int 			direct;
+	void			*weapon_frames[NUM_FRAMES];
+	int 			current_frame;
 }	t_data;
 
 typedef struct s_list
@@ -164,6 +167,7 @@ int		is_zero_surrounded(t_data **data);
 int		is_rounded(t_data **data);
 void	prepare(char *line, t_data **data);
 int		check_map_validity(t_data **data);
+int    ft_texture_color(unsigned int c);
 // tools
 int		is_alpha(char *c);
 size_t	ft_strlen(const char *s);
@@ -184,6 +188,9 @@ int		wsne_cf1(char *ln);
 int		null_check(char *line);
 int		ft_isalpha(int c);
 char	*ft_strchr(const char *s, int c);
+char    *ft_itoa(int n);
+void load_weapon_images(t_data *data);
+void set_player(t_data *data);
 // ft_open
 
 typedef struct s_fd_col
@@ -239,6 +246,9 @@ double	ft_normalize(double ang);
 double	set_angle(t_player pl);
 int	ray_datiction_dwn(double ang);
 int	ray_dariction_right(double ang);
+
+double	find_horiznatal_inter(t_player pl, double ang, t_data *data);
+float	find_vertical_inter(t_player pl, double ang, t_data *data);
 
 
 #endif

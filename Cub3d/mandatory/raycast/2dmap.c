@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/11/29 19:32:43 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:58:52 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,7 @@ void	handell_keys(void *pram)
 	clear_image(data);
 	render_2d(data);
 	ray_cast(data);
+	set_player(data);
 }
 
 void	start_game(t_data *data)

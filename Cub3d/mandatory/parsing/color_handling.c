@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   color_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 18:17:17 by yessemna          #+#    #+#             */
-/*   Updated: 2024/09/16 18:18:55 by yessemna         ###   ########.fr       */
+/*   Created: 2024/12/03 09:38:17 by yessemna          #+#    #+#             */
+/*   Updated: 2024/12/03 09:41:58 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./cub3d.h"
+#include "../cub3d.h"
 
-
-int main()
+int    ft_color(int r, int g, int b, int a)
 {
-    printf("Hello World\n");
-    return 0;
+    return ((((r * 256 + g) * 256) + b) * 256 + a);
+}
+
+int    ft_texture_color(unsigned int c)
+{
+    int    r;
+    int    g;
+    int    b;
+    int    a;
+
+    a = c % 256;
+    c /= 256;
+    b = c % 256;
+    c /= 256;
+    g = c % 256;
+    c /= 256;
+    r = c;
+    return (ft_color(a, b, g, r));
 }
