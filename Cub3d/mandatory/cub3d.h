@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:58:40 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:09:26 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,9 +246,11 @@ double	ft_normalize(double ang);
 double	set_angle(t_player pl);
 int	ray_datiction_dwn(double ang);
 int	ray_dariction_right(double ang);
-
+void	siting_up_steps(double	*x, double *y, double ang);
+void	find_pixel(double hght, int *top, int *bottum);
 double	find_horiznatal_inter(t_player pl, double ang, t_data *data);
 float	find_vertical_inter(t_player pl, double ang, t_data *data);
+void render(t_data *data, double ray, int i);
 
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter_hndl.c                                       :+:      :+:    :+:   */
+/*   find_intrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 09:52:57 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/04 22:58:51 by yessemna         ###   ########.fr       */
+/*   Created: 2024/12/05 19:32:37 by lamhal            #+#    #+#             */
+/*   Updated: 2024/12/05 19:32:52 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,6 @@ int	hitt_wall(double i, double j, t_data *data)
 	if (data->map.map[y][x] =='1')
 		return (0);
 	return (1);
-}
-
-void	siting_up_steps(double	*x, double *y, double ang)
-{
-	if (ray_datiction_dwn(ang))
-		*y = fabs(*y);
-	else
-		*y = -fabs(*y);
-	if (ray_dariction_right(ang))
-		*x = fabs(*x);
-	else
-		*x = -fabs(*x);
 }
 
 t_pos	get_first_intesaction(t_player pl, double ang)

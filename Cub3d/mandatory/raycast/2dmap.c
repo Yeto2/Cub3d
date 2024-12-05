@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/05 16:58:52 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:41:36 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,10 +193,10 @@ void	handell_keys(void *pram)
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_RIGHT))
 		data->ang += M_PI / 50;
 	data->ang = ft_normalize(data->ang);
-	clear_image(data);
+	// clear_image(data);
 	render_2d(data);
 	ray_cast(data);
-	set_player(data);
+	// set_player(data);
 }
 
 void	start_game(t_data *data)

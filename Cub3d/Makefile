@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
+#    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/12/05 17:01:58 by yessemna         ###   ########.fr        #
+#    Updated: 2024/12/05 19:33:40 by lamhal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_n
 		$(MANDATORY)/parsing/esolate_check.c $(MANDATORY)/parsing/is_rounded.c $(MANDATORY)/parsing/prepare.c \
 		$(MANDATORY)/parsing/map_validity.c $(MANDATORY)/parsing/checkers_.c $(MANDATORY)/utils/ft_strchr.c \
 		$(MANDATORY)/raycast/2dmap.c $(MANDATORY)/raycast/render3d.c $(MANDATORY)/parsing/color_handling.c \
-		$(MANDATORY)/raycast/inter_hndl.c $(MANDATORY)/raycast/player.c
+		$(MANDATORY)/raycast/find_intrs.c $(MANDATORY)/raycast/player.c $(MANDATORY)/raycast/pos_angl.c $(MANDATORY)/raycast/ray_steps.c \
+		$(MANDATORY)/textures/texters.c
 
 OBJ = $(SRC:$(MANDATORY)/%.c=$(MANDATORY)/%.o)
 
