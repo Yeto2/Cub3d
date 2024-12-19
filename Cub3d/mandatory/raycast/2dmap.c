@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/19 09:47:20 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/19 11:33:29 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,11 +129,12 @@ void	clear_image(t_data *data)
 	int j;
 
 	j = -1;
+	int clr = 255 << 24 | 255 << 16 | 255 << 8 | 0;
 	while (++j < S_H)
 	{
 		i = -1;
 		while (++i < S_W)
-			mlx_put_pixel(data->mlx.img_r, i, j, get_coller(0, 0, 0, 0));		
+			mlx_put_pixel(data->mlx.img_r, i, j, clr);		
 	}
 }
 
@@ -197,8 +198,8 @@ void	handell_keys(void *pram)
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_RIGHT))
 		data->ang += M_PI / 50;
 	data->ang = ft_normalize(data->ang);
-	// clear_image(data);
 	// render_2d(data);
+	clear_image(data);
 	ray_cast(data);
 	// set_player(data);
 }
@@ -211,10 +212,12 @@ void	start_game(t_data *data)
     data->mlx.img_m = mlx_new_image(data->mlx.mlx_p, 450, 200);
     data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
 	data->scale = calculate_scale(data);
-	printf ("scale %f\n", data->scale);
 	data->unite = data->scale / TILE_SIZE;
-	// ray_cast(data);
+	clear_image(data);
+	ray_cast(data);
+	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_r, 0, 0);
 	// render_2d(data);
+	
     mlx_loop_hook(data->mlx.mlx_p, handell_keys, data);
     mlx_loop(data->mlx.mlx_p);
 }

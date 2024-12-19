@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:33:41 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/18 14:36:12 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/19 11:16:10 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ray_cast(t_data	*data)
 		first_ray += fov / S_W;
 		i++;
 	}
-    mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_r, 0, 0);
+    // mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_r, 0, 0);
 }
 
 

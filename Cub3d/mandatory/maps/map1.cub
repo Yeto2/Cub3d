@@ -4,8 +4,8 @@ WE     ./mandatory/images/walls/w.png
 
 EA ./mandatory/images/walls/e.png
 
-C 139,0,0
-F                          70,70,70
+C 140,100,0
+F                          40,70,70
 
 
            NO ./mandatory/images/walls/n.png

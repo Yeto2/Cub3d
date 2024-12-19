@@ -6,12 +6,12 @@
 #    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/12/05 19:33:40 by lamhal           ###   ########.fr        #
+#    Updated: 2024/12/19 11:18:31 by lamhal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc -g -fsanitize=address
-CFLAGS = -Wall -Wextra -Werror -O3 -Iinclude
+CFLAGS = -Wall -Wextra -Werror -Iinclude
 MLX_LIB = MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 OBJ_DIR = obj
 MANDATORY = mandatory
