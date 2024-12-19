@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:46:06 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/05 17:52:49 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/06 20:24:47 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_player   pos_in_map(t_player pl)
 	t_player	tmp;
 	tmp.x = pl.x * TILE_SIZE + (TILE_SIZE / 2);
 	tmp.y = pl.y * TILE_SIZE + (TILE_SIZE / 2);
+	tmp.dir = pl.dir;
 	return (tmp);
 }
 
@@ -38,9 +39,9 @@ double	set_angle(t_player pl)
 		ang = 3 * M_PI / 2;
 	else if (pl.dir == 'E')
 		ang = 0;
-	else if (pl.dir == 's')
+	else if (pl.dir == 'S')
 		ang = M_PI / 2;
-	else if (pl.dir == 'w')
+	else if (pl.dir == 'W')
 		ang = M_PI;
 	ang = ft_normalize(ang);
 	return (ang);

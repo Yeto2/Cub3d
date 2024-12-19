@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/05 19:41:36 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/19 09:47:20 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,13 +188,17 @@ void	handell_keys(void *pram)
 		move_right_left(data, -1);
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_D))
 		move_right_left(data, 1);
+	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_ESCAPE))
+	{
+		exit(0); // need more ...
+	}
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_LEFT))
 		data->ang -= M_PI / 50;
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_RIGHT))
 		data->ang += M_PI / 50;
 	data->ang = ft_normalize(data->ang);
 	// clear_image(data);
-	render_2d(data);
+	// render_2d(data);
 	ray_cast(data);
 	// set_player(data);
 }

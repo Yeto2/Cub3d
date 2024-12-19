@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:59:59 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/05 18:00:30 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/19 09:39:22 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,22 @@ int	ret_offset_x(double wall_hit_x, double wall_hit_y,
 	return (offset_x);
 }
 
-mlx_texture_t *return_texture(t_data *data, t_textures *textures)
+mlx_texture_t *return_texture(t_data *data, t_textures *textures, double ray)
 {
+    ray = ft_normalize(ray);
     if (!data->ver) // Vertical intersection
     {
-        if (data->direct == -1) // West
-            return (textures->we);
-        else if (data->direct == 1) // East
+        if (ray_dariction_right(ray)) // West
             return (textures->ea);
+        else 
+            return (textures->we);
     }
     else // Horizontal intersection
     {
-        if (data->direct == -1) // North
-            return (textures->no);
-        else if (data->direct == 1) // South
+        if (ray_datiction_dwn(ray)) // North
             return (textures->so);
+        else
+            return (textures->no);
     }
     return (NULL);
 }
@@ -68,13 +69,12 @@ void render(t_data *data, double ray, int i)
     t_textures *textures;
     uint32_t *p_clrs;
 	mlx_texture_t *texture;
-
     textures = &data->textures;
     data->ray_dst *= cos(ray - data->ang);
     dst = S_H / (tan(M_PI / 6) * 2);
     wall_hght = TILE_SIZE * dst / data->ray_dst;
     find_pixel(wall_hght, &top, &bottom);
-	texture = return_texture(data, textures);
+	texture = return_texture(data, textures, ray);
     data->offsetx = ret_offset_x(data->h_inter, data->v_inter, data->ver, texture);
     int j = 0;
 	p_clrs = (uint32_t *)texture->pixels;
