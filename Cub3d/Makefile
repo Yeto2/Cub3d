@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
+#    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/12/19 11:18:31 by lamhal           ###   ########.fr        #
+#    Updated: 2024/12/20 01:59:36 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc -g -fsanitize=address
+CC = cc #-g -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror -Iinclude
 MLX_LIB = MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 OBJ_DIR = obj
@@ -19,7 +19,7 @@ BUILD = MLX42/build
 NAME = cub3d
 
 SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_next_line.c $(MANDATORY)/utils/ft_strcmp.c \
-		$(MANDATORY)/utils/ft_strlen.c $(MANDATORY)/utils/ft_itoa.c $(MANDATORY)/utils/ft_strncmp.c $(MANDATORY)/utils/ft_substr.c \
+		$(MANDATORY)/utils/ft_strlen.c $(MANDATORY)/utils/ft_itoa.c $(MANDATORY)/utils/ft_isalpha.c $(MANDATORY)/utils/ft_strncmp.c $(MANDATORY)/utils/ft_substr.c \
 		$(MANDATORY)/utils/ft_open/ft_open_tools.c $(MANDATORY)/utils/ft_open/ft_open.c $(MANDATORY)/utils/ft_malloc/ft_malloc_tools.c \
 		$(MANDATORY)/utils/ft_malloc/ft_malloc.c $(MANDATORY)/utils/strjoin.c $(MANDATORY)/utils/ft_bzero.c $(MANDATORY)/utils/ft_calloc.c\
 		$(MANDATORY)/utils/ft_putendl.c $(MANDATORY)/utils/ft_strdup.c $(MANDATORY)/utils/ft_atoi.c $(MANDATORY)/utils/tools.c\
@@ -28,9 +28,9 @@ SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_n
 		$(MANDATORY)/parsing/fill_map_data.c $(MANDATORY)/parsing/handlers.c $(MANDATORY)/utils/join_char.c $(MANDATORY)/utils/print_err.c \
 		$(MANDATORY)/parsing/esolate_check.c $(MANDATORY)/parsing/is_rounded.c $(MANDATORY)/parsing/prepare.c \
 		$(MANDATORY)/parsing/map_validity.c $(MANDATORY)/parsing/checkers_.c $(MANDATORY)/utils/ft_strchr.c \
-		$(MANDATORY)/raycast/2dmap.c $(MANDATORY)/raycast/render3d.c $(MANDATORY)/parsing/color_handling.c \
-		$(MANDATORY)/raycast/find_intrs.c $(MANDATORY)/raycast/player.c $(MANDATORY)/raycast/pos_angl.c $(MANDATORY)/raycast/ray_steps.c \
-		$(MANDATORY)/textures/texters.c
+		$(MANDATORY)/raycast/2dmap.c $(MANDATORY)/raycast/events.c $(MANDATORY)/raycast/render3d.c $(MANDATORY)/parsing/color_handling.c \
+		$(MANDATORY)/raycast/find_intrs.c $(MANDATORY)/raycast/pos_angl.c $(MANDATORY)/raycast/ray_steps.c \
+		$(MANDATORY)/textures/texters.c $(MANDATORY)/textures/handlers.c
 
 OBJ = $(SRC:$(MANDATORY)/%.c=$(MANDATORY)/%.o)
 

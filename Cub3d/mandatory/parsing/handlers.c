@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:35:01 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/28 21:23:51 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:19:13 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ int	prepare_data(t_data *data)
 
 void	ciel(t_data **data, int *r, int *g, int *b)
 {
-	(*data)->ciel.red = *r;
-	(*data)->ciel.green = *g;
-	(*data)->ciel.blue = *b;
+	(*data)->ciel.r = *r;
+	(*data)->ciel.g = *g;
+	(*data)->ciel.b = *b;
 }
 
 void	flooor(t_data **data, int *r, int *g, int *b)
 {
-	(*data)->floor.red = *r;
-	(*data)->floor.green = *g;
-	(*data)->floor.blue = *b;
+	(*data)->floor.r = *r;
+	(*data)->floor.g = *g;
+	(*data)->floor.b = *b;
 }
 
 void	handle_color(char *color, char type, t_data **data)

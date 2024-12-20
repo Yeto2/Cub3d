@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_intrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:32:37 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/05 19:32:52 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/19 17:11:00 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int	hitt_wall(double i, double j, t_data *data)
 {
 	int	x;
 	int	y;
-	
+
 	x = i / TILE_SIZE;
 	y = j / TILE_SIZE;
 	if (x < 0 || y < 0)
 		return (0);
 	if (x >= data->map.map_w || y >= data->map.map_h)
 		return (0);
-	if (data->map.map[y][x] =='1')
+	if (data->map.map[y][x] == '1')
 		return (0);
 	return (1);
 }
@@ -72,7 +72,7 @@ t_pos	get_first_intesaction1(t_player pl, double ang)
 
 	inter.x = floor(pl.x / TILE_SIZE) * TILE_SIZE ;
 	if ((ang >= 0 && ang < M_PI / 2)
-			|| (ang > 3 * M_PI / 2 && ang < 2 * M_PI))
+		|| (ang > 3 * M_PI / 2 && ang < 2 * M_PI))
 		inter.x += TILE_SIZE;
 	inter.y = pl.y + (inter.x - pl.x) * tan(ang);
 	return (inter);
@@ -80,7 +80,7 @@ t_pos	get_first_intesaction1(t_player pl, double ang)
 
 float	find_vertical_inter(t_player pl, double ang, t_data *data)
 {
-	t_pos	inter;
+	t_pos		inter;
 	double		x_step;
 	double		y_step;
 	int			pixl;

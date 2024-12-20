@@ -3,93 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   texters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:59:59 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/19 09:39:22 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/19 23:32:39 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-mlx_texture_t	*set_png_texture(t_data *data, char *path)
-{
-	mlx_texture_t	*texture;
-	(void)data; // to destroy images later
-	
-	texture = mlx_load_png(path);
-
-	if (texture == NULL)
-	{
-		write(2, "Error\nfaild to load png", 24);
-	}
-	return (texture);
-}
-
 int	ret_offset_x(double wall_hit_x, double wall_hit_y,
-		bool is_vr, mlx_texture_t *texture)
+		bool is_vr, mlx_texture_t *txt)
 {
-	int	offset_x;
+	int	off_x;
 
 	if (!is_vr)
-		// offset_x = (int)wall_hit_y % texture->width;
-		offset_x = ((int)(wall_hit_y * texture->width) / TILE_SIZE) % texture->width;
+		off_x = ((int)(wall_hit_y * txt->width) / TILE_SIZE) % txt->width;
 	else
-		// offset_x = (int)wall_hit_x % texture->width;
-		offset_x = ((int)(wall_hit_x * texture->width) / TILE_SIZE) % texture->width;
-	return (offset_x);
+		off_x = ((int)(wall_hit_x * txt->width) / TILE_SIZE) % txt->width;
+	return (off_x);
 }
 
-mlx_texture_t *return_texture(t_data *data, t_textures *textures, double ray)
+void	func(t_data *data, t_render_var *t, double ray, mlx_texture_t *txt)
 {
-    ray = ft_normalize(ray);
-    if (!data->ver) // Vertical intersection
-    {
-        if (ray_dariction_right(ray)) // West
-            return (textures->ea);
-        else 
-            return (textures->we);
-    }
-    else // Horizontal intersection
-    {
-        if (ray_datiction_dwn(ray)) // North
-            return (textures->so);
-        else
-            return (textures->no);
-    }
-    return (NULL);
+	data->ray_dst *= cos(ray - data->ang);
+	t->dst = S_H / (tan(M_PI / 6) * 2);
+	t->wall_hght = TILE_SIZE * t->dst / data->ray_dst;
+	find_pixel(t->wall_hght, &t->top, &t->bottom);
+	data->offsetx = ret_offset_x(data->h_inter,
+			data->v_inter, data->ver, txt);
+	t->p_clrs = (uint32_t *)txt->pixels;
+	t->j = 0;
 }
 
-void render(t_data *data, double ray, int i)
+void	render(t_data *data, double ray, int i)
 {
-    double wall_hght;
-    double dst;
-    int top;
-    int bottom;
-    t_textures *textures;
-    uint32_t *p_clrs;
-	mlx_texture_t *texture;
-    textures = &data->textures;
-    data->ray_dst *= cos(ray - data->ang);
-    dst = S_H / (tan(M_PI / 6) * 2);
-    wall_hght = TILE_SIZE * dst / data->ray_dst;
-    find_pixel(wall_hght, &top, &bottom);
-	texture = return_texture(data, textures, ray);
-    data->offsetx = ret_offset_x(data->h_inter, data->v_inter, data->ver, texture);
-    int j = 0;
-	p_clrs = (uint32_t *)texture->pixels;
-    while (j < S_H)
-    {
-        if (j < top)
-            mlx_put_pixel(data->mlx.img_r, i, j, get_coller(data->ciel.red, data->ciel.green, data->ciel.blue, 255));
-        else if (j >= bottom && j < S_H)
-            mlx_put_pixel(data->mlx.img_r, i, j, get_coller(data->floor.red, data->floor.green, data->floor.blue, 255));
-        else if (j >= top && j < bottom)
-        {
-            int texture_y = (j - top) * (texture->height / wall_hght); // Adjust for height
-            int color =  ft_texture_color(p_clrs[data->offsetx + texture_y * texture->width]);// Get color from texture
-            mlx_put_pixel(data->mlx.img_r, i, j, color);
-        }
-        j++;
-    }
+	mlx_texture_t	*txt;
+	t_textures		*textures;
+	t_render_var	t;
+
+	textures = &data->textures;
+	txt = return_texture(data, textures, ray);
+	func(data, &t, ray, txt);
+	while (t.j < S_H)
+	{
+		if (t.j < t.top)
+			mlx_put_pixel(data->mlx.img_r, i, t.j, get_coller(data->ciel.r,
+					data->ciel.g, data->ciel.b, 255));
+		else if (t.j >= t.bottom && t.j < S_H)
+			mlx_put_pixel(data->mlx.img_r, i, t.j,
+				get_coller(data->floor.r, data->floor.g, data->floor.b, 255));
+		else if (t.j >= t.top && t.j < t.bottom)
+		{
+			t.txt_y = (t.j - t.top) * (txt->height / t.wall_hght);
+			t.color = txt_clr(t.p_clrs[data->offsetx + t.txt_y * txt->width]);
+			mlx_put_pixel(data->mlx.img_r, i, t.j, t.color);
+		}
+		t.j++;
+	}
 }

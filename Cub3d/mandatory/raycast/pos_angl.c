@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pos_angl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:46:06 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/06 20:24:47 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/19 22:20:06 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-t_player   pos_in_map(t_player pl)
+t_player	pos_in_map(t_player pl)
 {
 	t_player	tmp;
+
 	tmp.x = pl.x * TILE_SIZE + (TILE_SIZE / 2);
 	tmp.y = pl.y * TILE_SIZE + (TILE_SIZE / 2);
 	tmp.dir = pl.dir;
@@ -46,4 +47,3 @@ double	set_angle(t_player pl)
 	ang = ft_normalize(ang);
 	return (ang);
 }
-
