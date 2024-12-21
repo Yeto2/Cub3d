@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 03:33:28 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 14:39:22 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_itoa(int n);
 void			load_weapon_images(t_data *data);
 int				is_alpha(char *c);
+void			terminate_mlx(t_data *data);
 // ft_open
 
 typedef struct s_fd_col

@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/21 01:09:34 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 15:36:02 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,17 @@ void	start_game(t_data *data)
 	data->ang = set_angle(data->player);
 	data->mlx.mlx_p = mlx_init(S_W, S_H, "cub3d", 0);
 	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p, 450, 200);
+	if (data->mlx.img_m == NULL)
+	{
+		terminate_mlx(data);
+		print_err("Error\nimage failed to load");
+	}
 	data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
+	if (data->mlx.img_r == NULL)
+	{
+		terminate_mlx(data);
+		print_err("Error\nimage failed to load");
+	}
 	data->scale = calculate_scale(data);
 	data->unite = data->scale / TILE_SIZE;
 	clear_image(data);

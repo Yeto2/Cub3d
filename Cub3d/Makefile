@@ -6,7 +6,7 @@
 #    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/12/21 03:31:39 by yessemna         ###   ########.fr        #
+#    Updated: 2024/12/21 15:22:09 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_n
 		$(MANDATORY)/utils/printf/ft_putnbr.c $(MANDATORY)/utils/printf/ft_putstr.c $(MANDATORY)/parsing/checkers.c \
 		$(MANDATORY)/parsing/fill_map_data.c $(MANDATORY)/parsing/handlers.c $(MANDATORY)/utils/join_char.c $(MANDATORY)/utils/print_err.c \
 		$(MANDATORY)/parsing/esolate_check.c $(MANDATORY)/parsing/is_rounded.c $(MANDATORY)/parsing/prepare.c \
-		$(MANDATORY)/parsing/map_validity.c $(MANDATORY)/parsing/checkers_.c $(MANDATORY)/utils/ft_strchr.c \
+		$(MANDATORY)/parsing/clean.c $(MANDATORY)/parsing/map_validity.c $(MANDATORY)/parsing/checkers_.c $(MANDATORY)/utils/ft_strchr.c \
 		$(MANDATORY)/raycast/2dmap.c $(MANDATORY)/raycast/events.c $(MANDATORY)/raycast/render3d.c $(MANDATORY)/parsing/color_handling.c \
 		$(MANDATORY)/raycast/find_intrs.c $(MANDATORY)/raycast/pos_angl.c $(MANDATORY)/raycast/ray_steps.c \
 		$(MANDATORY)/textures/texters.c $(MANDATORY)/textures/handlers.c \
@@ -45,7 +45,7 @@ SRC_B = $(BONUS)/main_bonus.c $(BONUS)/utils/ft_split_bonus.c $(BONUS)/utils/get
 		$(BONUS)/utils/printf/ft_putnbr_bonus.c $(BONUS)/utils/printf/ft_putstr_bonus.c $(BONUS)/parsing/checkers_bonus.c \
 		$(BONUS)/parsing/fill_map_data_bonus.c $(BONUS)/parsing/handlers_bonus.c $(BONUS)/utils/join_char_bonus.c $(BONUS)/utils/print_err_bonus.c \
 		$(BONUS)/parsing/esolate_check_bonus.c $(BONUS)/parsing/is_rounded_bonus.c $(BONUS)/parsing/prepare_bonus.c \
-		$(BONUS)/parsing/map_validity_bonus.c $(BONUS)/parsing/checkers__bonus.c $(BONUS)/utils/ft_strchr_bonus.c \
+		$(BONUS)/parsing/clean_bonus.c $(BONUS)/parsing/map_validity_bonus.c $(BONUS)/parsing/checkers__bonus.c $(BONUS)/utils/ft_strchr_bonus.c \
 		$(BONUS)/raycast/2dmap_bonus.c $(BONUS)/raycast/render_2d_bonus.c $(BONUS)/raycast/events_bonus.c $(BONUS)/raycast/render3d_bonus.c $(BONUS)/parsing/color_handling_bonus.c \
 		$(BONUS)/raycast/find_intrs_bonus.c $(BONUS)/raycast/pos_angl_bonus.c $(BONUS)/raycast/ray_steps_bonus.c \
 		$(BONUS)/textures/texters_bonus.c $(BONUS)/textures/handlers_bonus.c \

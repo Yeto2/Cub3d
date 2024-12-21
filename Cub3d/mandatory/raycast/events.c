@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 21:43:24 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/19 23:45:08 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 15:40:29 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	handell_keys(void *pram)
 		move_right_left(data, 1);
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_ESCAPE))
 	{
-		exit(0);
+		terminate_mlx(data);
+		exit(EXIT_SUCCESS);
 	}
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_LEFT))
 		data->ang -= M_PI / 50;
