@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:32:37 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/19 17:11:00 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 01:09:51 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	hitt_wall(double i, double j, t_data *data)
 		return (0);
 	if (x >= data->map.map_w || y >= data->map.map_h)
 		return (0);
-	if (data->map.map[y][x] == '1')
+	if (data->map.map[y][x] == '1' || data->map.map[y][x] == 'C')
 		return (0);
 	return (1);
 }

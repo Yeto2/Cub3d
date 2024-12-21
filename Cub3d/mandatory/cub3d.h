@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/20 01:22:18 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 03:33:28 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #  define BUFFER_SIZE 10
 # endif
 # define TILE_SIZE 64
-# define MOV_SPEED 20
+# define MOV_SPEED 5
 # define NUM_FRAMES 5
 
 typedef struct s_map

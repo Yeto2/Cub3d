@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:17:54 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/01 12:53:49 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 01:40:15 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int	fill_map_data(t_data *data)
 	if (last_line[ft_strlen(last_line) - 1] == '\n' || !last_line)
 		return (1);
 	(data)->data_map[i] = NULL;
+	// close(fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 19:55:52 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/20 02:52:16 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 02:13:48 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_calloc(1, 1));
 	if (len >= slen - start)
 		len = slen - start;
-	str = (char *)malloc(sizeof(char) * len + 1);
+	// str = (char *)malloc(sizeof(char) * len + 1);
+	str = (char *)g_malloc(sizeof(char) * len + 1, MALLOC);
 	if (!str)
 		return (0);
 	while (len--)

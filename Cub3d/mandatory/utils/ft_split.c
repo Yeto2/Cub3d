@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:14:21 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/20 02:52:23 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 02:11:56 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
-	lst = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
+	// lst = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
+	lst = (char **)g_malloc((ft_countword(s, c) + 1) * sizeof(char *), MALLOC);
 	if (!s || !lst)
 		return (0);
 	i = 0;
