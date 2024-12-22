@@ -6,13 +6,13 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:32:37 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/21 16:54:36 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/22 14:55:56 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 
-int	hitt_wall(double i, double j, t_data *data)// <----- to check c is hitted
+int	hitt_wall(double i, double j, t_data *data, int ver)// <----- to check c is hitted
 {
 	int	x;
 	int	y;
@@ -24,9 +24,14 @@ int	hitt_wall(double i, double j, t_data *data)// <----- to check c is hitted
 	if (x >= data->map.map_w || y >= data->map.map_h)
 		return (0);
 	if (data->map.map[y][x] == '1')
-		return (data->wall_or_dor = 0, 0);
+		return (0);
 	if (data->map.map[y][x] == 'C')
-		return (data->wall_or_dor = 1, 0);
+	{
+		if (ver)
+			return (data->dor_v = 1, 0);
+		else
+			return (data->dor_h = 1, 0);
+	}
 	return (1);
 }
 
@@ -59,7 +64,7 @@ double	find_horiznatal_inter(t_player pl, double ang, t_data *data)
 	y_step = TILE_SIZE;
 	x_step = TILE_SIZE / tan(ang);
 	siting_up_steps(&x_step, &y_step, ang);
-	while (hitt_wall(inter.x, inter.y - pixl, data))
+	while (hitt_wall(inter.x, inter.y - pixl, data, 0))
 	{
 		inter.x += x_step;
 		inter.y += y_step;
@@ -98,7 +103,7 @@ float	find_vertical_inter(t_player pl, double ang, t_data *data)
 	x_step = TILE_SIZE;
 	y_step = TILE_SIZE * tan(ang);
 	siting_up_steps(&x_step, &y_step, ang);
-	while (hitt_wall(inter.x - pixl, inter.y, data))
+	while (hitt_wall(inter.x - pixl, inter.y, data, 1))
 	{
 		inter.x += x_step;
 		inter.y += y_step;
