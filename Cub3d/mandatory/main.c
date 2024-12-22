@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 15:35:03 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 09:17:46 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	init_textures(t_data *data)
 {
 	data->textures.so = set_png_texture(data, data->so);
+	data->textures.we = set_png_texture(data, data->we);
 	data->textures.no = set_png_texture(data, data->no);
 	data->textures.ea = set_png_texture(data, data->ea);
-	data->textures.we = set_png_texture(data, data->we);
 }
 
 void f()

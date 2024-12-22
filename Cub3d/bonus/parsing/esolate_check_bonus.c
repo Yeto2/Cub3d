@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   esolate_check.c                                    :+:      :+:    :+:   */
+/*   esolate_check_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:37:44 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/20 19:38:07 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:30:09 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int parse_doors(t_data **data)
 				
 				if (!lr_door && !tb_door)
 					print_err("door position is invalid");
-				(*data)->map.map[i][j] = '0'; // set door to 0
+				// (*data)->map.map[i][j] = '0'; // set door to 0
 			}
 			else if (ft_isalpha((*data)->map.map[i][j]))
 				return (1);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texters.c                                          :+:      :+:    :+:   */
+/*   texters_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:59:59 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/20 19:35:42 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 11:09:48 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	func(t_data *data, t_render_var *t, double ray, mlx_texture_t *txt)
 
 // void set_door_texture(t_data *data, t_render_var t)
 // {
-// 	// t->p_clrs = (uint32_t *)txt->pixels;
+// 	t->p_clrs = (uint32_t *)txt->pixels;
 // }
 
 void	render(t_data *data, double ray, int i)
@@ -49,7 +49,10 @@ void	render(t_data *data, double ray, int i)
 
 	textures = &data->textures;
 	// set_door_texture(data, t);
-	txt = return_texture(data, textures, ray);
+	if (data->wall_or_dor)
+		txt = data->door_txt;
+	else 
+		txt = return_texture(data, textures, ray);
 	func(data, &t, ray, txt);
 	while (t.j < S_H)
 	{

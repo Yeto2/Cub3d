@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/21 01:08:13 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 10:51:38 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ void	clear_image(t_data *data)
 	}
 }
 
-int	check_map(t_data *data, double x, double y)
-{
-	int	i;
-	int	j;
-
-	i = x / TILE_SIZE;
-	j = y / TILE_SIZE;
-	if (data->map.map[j][i] == '0')
-		return (1);
-	return (0);
-}
-
 void	start_game(t_data *data)
 {
 	data->player = pos_in_map(data->player);
@@ -71,7 +59,9 @@ void	start_game(t_data *data)
 	data->unite = data->scale / TILE_SIZE;
 	clear_image(data);
 	ray_cast(data);
+	render_2d(data);
 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_r, 0, 0);
+	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 10, 10);
 	mlx_loop_hook(data->mlx.mlx_p, handell_keys, data);
 	// mlx_cursor_hook(data->mlx.mlx_p, move_mouse, &data);
 	// mlx_set_cursor_mode(data->mlx.mlx_p, MLX_MOUSE_DISABLED);

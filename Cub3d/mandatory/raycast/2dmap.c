@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/21 15:36:02 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 09:37:34 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ void	clear_image(t_data *data)
 	}
 }
 
-int	check_map(t_data *data, double x, double y)
-{
-	int	i;
-	int	j;
-
-	i = x / TILE_SIZE;
-	j = y / TILE_SIZE;
-	if (data->map.map[j][i] == '0')
-		return (1);
-	return (0);
-}
-
 void	start_game(t_data *data)
 {
 	data->player = pos_in_map(data->player);
@@ -68,16 +56,16 @@ void	start_game(t_data *data)
 	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p, 450, 200);
 	if (data->mlx.img_m == NULL)
 	{
-		terminate_mlx(data);
+		// terminate_mlx(data);
 		print_err("Error\nimage failed to load");
 	}
 	data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
 	if (data->mlx.img_r == NULL)
 	{
-		terminate_mlx(data);
+		// terminate_mlx(data);
 		print_err("Error\nimage failed to load");
 	}
-	data->scale = calculate_scale(data);
+	//data->scale = calculate_scale(data);
 	data->unite = data->scale / TILE_SIZE;
 	clear_image(data);
 	ray_cast(data);
