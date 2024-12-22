@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:59:59 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/22 11:09:48 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/22 12:28:35 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	render(t_data *data, double ray, int i)
 
 	textures = &data->textures;
 	// set_door_texture(data, t);
-	if (data->wall_or_dor)
+	if (data->dor_h || data->dor_v)
 		txt = data->door_txt;
 	else 
 		txt = return_texture(data, textures, ray);

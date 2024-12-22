@@ -17,14 +17,14 @@ int	check_map(t_data *data, double x, double y)
 	int	i;
 	int	j;
 
-	i = x / TILE_SIZE;
-	j = y / TILE_SIZE;
-	if (data->map.map[j][i] == '0')
-		return (1);
-    // i = (x + 10) / TILE_SIZE;
-	// j = (y + 10) / TILE_SIZE;
+	// i = x / TILE_SIZE;
+	// j = y / TILE_SIZE;
 	// if (data->map.map[j][i] == '0')
 	// 	return (1);
+    i = (x + 10) / TILE_SIZE;
+	j = (y + 10) / TILE_SIZE;
+	if (data->map.map[j][i] == '0')
+		return (1);
 	return (0);
 }
 

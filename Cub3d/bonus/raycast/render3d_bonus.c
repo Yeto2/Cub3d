@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render3d.c                                         :+:      :+:    :+:   */
+/*   render3d_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:33:41 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/19 16:59:31 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 14:53:31 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	ray_cast(t_data	*data)
 	first_ray = data->ang - fov / 2;
 	while (i < S_W)
 	{
+		data->dor_h = 0;
+		data->dor_v = 0;
 		data->ver = 0;
 		first_ray = ft_normalize(first_ray);
 		v_inter = find_vertical_inter(data->player, first_ray, data);
