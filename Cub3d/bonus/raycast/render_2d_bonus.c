@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_2d_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:12:47 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 03:34:52 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 10:47:50 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	render_2d(t_data *data)
 	data->tmp_pl.x = data->player.x * data->unite;
 	data->tmp_pl.y = data->player.y * data->unite;
 	draw_player(data->mlx.img_m, data->tmp_pl.x, data->tmp_pl.y);
-	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 10, 10);
+	// mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 10, 10);
 }

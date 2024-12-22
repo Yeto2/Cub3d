@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clean_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 14:39:44 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 14:40:38 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/21 15:54:24 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 void	delete_image(mlx_t *mlx, mlx_image_t *img)
 {
