@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/22 14:54:53 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/22 16:53:59 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ typedef struct s_data
 	double			unite;
 	double			ang;
 	double			ray_dst;
-	int				ver;
+	int				hor;
 	int				ray_x;
 	int				wall_hght;
 	int				top_pixel;
