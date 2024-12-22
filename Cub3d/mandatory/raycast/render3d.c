@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render3d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:33:41 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/19 16:59:31 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 16:53:39 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ void	ray_cast(t_data	*data)
 	first_ray = data->ang - fov / 2;
 	while (i < S_W)
 	{
-		data->ver = 0;
+		data->hor = 0;
 		first_ray = ft_normalize(first_ray);
 		v_inter = find_vertical_inter(data->player, first_ray, data);
 		h_inter = find_horiznatal_inter(data->player, first_ray, data);
 		if (v_inter <= h_inter)
 			data->ray_dst = v_inter;
 		else
-			(1) && (data->ray_dst = h_inter, data->ver = 1);
+			(1) && (data->ray_dst = h_inter, data->hor = 1);
 		render(data, first_ray, i);
 		first_ray += fov / S_W;
 		i++;

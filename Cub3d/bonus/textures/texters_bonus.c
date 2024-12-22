@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:59:59 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/22 12:28:35 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/22 16:58:43 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	func(t_data *data, t_render_var *t, double ray, mlx_texture_t *txt)
 	t->wall_hght = TILE_SIZE * t->dst / data->ray_dst;
 	find_pixel(t->wall_hght, &t->top, &t->bottom);
 	data->offsetx = ret_offset_x(data->h_inter,
-			data->v_inter, data->ver, txt);
+			data->v_inter, data->hor, txt);
 	t->p_clrs = (uint32_t *)txt->pixels;
 	t->j = 0;
 }
@@ -49,7 +49,7 @@ void	render(t_data *data, double ray, int i)
 
 	textures = &data->textures;
 	// set_door_texture(data, t);
-	if (data->dor_h || data->dor_v)
+	if ((data->hor && data->dor_h) || (!data->hor && data->dor_v))
 		txt = data->door_txt;
 	else 
 		txt = return_texture(data, textures, ray);

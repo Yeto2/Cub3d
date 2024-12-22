@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 23:32:11 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 16:34:01 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/22 16:53:39 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ mlx_texture_t	*set_png_texture(t_data *data, char *path)
 mlx_texture_t	*return_texture(t_data *data, t_textures *textures, double ray)
 {
 	ray = ft_normalize(ray);
-	if (!data->ver)
+	if (!data->hor)
 	{
 		if (ray_dariction_right(ray))
 			return (textures->ea);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 14:39:22 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 16:54:31 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_data
 	double			unite;
 	double			ang;
 	double			ray_dst;
-	int				ver;
+	int				hor;
 	int				ray_x;
 	int				wall_hght;
 	int				top_pixel;

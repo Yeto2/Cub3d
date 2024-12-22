@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:59:59 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/21 01:06:24 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/22 16:53:39 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	func(t_data *data, t_render_var *t, double ray, mlx_texture_t *txt)
 	t->wall_hght = TILE_SIZE * t->dst / data->ray_dst;
 	find_pixel(t->wall_hght, &t->top, &t->bottom);
 	data->offsetx = ret_offset_x(data->h_inter,
-			data->v_inter, data->ver, txt);
+			data->v_inter, data->hor, txt);
 	t->p_clrs = (uint32_t *)txt->pixels;
 	t->j = 0;
 }
