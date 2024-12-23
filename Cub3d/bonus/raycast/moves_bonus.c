@@ -27,34 +27,44 @@ int	check_map(t_data *data, double x, double y)
 void	move_front_back(t_data *data, int dirc)
 {
 	t_pos	pos;
+	t_pos	check;
+	int		dst_to_wall;
 
+	dst_to_wall = MOV_SPEED + 20;
 	pos.x = data->player.x + dirc * MOV_SPEED * cos(data->ang);
 	pos.y = data->player.y + dirc * MOV_SPEED * sin(data->ang);
-	if (check_map(data, pos.x, pos.y))
+	check.x = data->player.x + dirc * dst_to_wall * cos(data->ang);
+	check.y = data->player.y + dirc * dst_to_wall * sin(data->ang);
+	if (check_map(data, pos.x, pos.y) && check_map(data, check.x, check.y))
 	{
 		data->player.x = pos.x;
 		data->player.y = pos.y;
 	}
-    else if (check_map(data, data->player.x, pos.y))
+    else if (check_map(data, data->player.x, pos.y) && check_map(data, data->player.x, check.y))
         data->player.y = pos.y;
-    else if (check_map(data, pos.x, data->player.y))
+    else if (check_map(data, pos.x, data->player.y) && check_map(data, check.x, data->player.y))
         data->player.x = pos.x;
 }
 
 void	move_right_left(t_data *data, int dirc)
 {
 	t_pos	pos;
+	t_pos	check;
+	int		dst_to_wall;
 
+	dst_to_wall = MOV_SPEED + 20;
 	pos.x = data->player.x + MOV_SPEED * cos(data->ang + dirc * M_PI / 2);
 	pos.y = data->player.y + MOV_SPEED * sin(data->ang + dirc * M_PI / 2);
-	if (check_map(data, pos.x, pos.y))
+	check.y = data->player.y + dst_to_wall * sin(data->ang + dirc * M_PI / 2);
+	check.x = data->player.x + dst_to_wall * cos(data->ang + dirc * M_PI / 2);
+	if (check_map(data, pos.x, pos.y) && check_map(data, check.x, check.y))
 	{
 		data->player.x = pos.x;
 		data->player.y = pos.y;
 	}
-    else if (check_map(data, data->player.x, pos.y))
+    else if (check_map(data, data->player.x, pos.y) && check_map(data, data->player.x, check.y))
         data->player.y = pos.y;
-    else if (check_map(data, pos.x, data->player.y))
+    else if (check_map(data, pos.x, data->player.y) && check_map(data, check.x, data->player.y))
         data->player.x = pos.x;
 }
 
