@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/22 16:53:59 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/23 04:26:44 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # endif
 # define TILE_SIZE 64
 # define MOV_SPEED 5
-# define NUM_FRAMES 5
+# define NUM_FRAMES 68
 
 typedef struct s_map
 {
@@ -99,6 +99,10 @@ typedef struct s_data
 {
 	mlx_texture_t	*texture;
 	mlx_texture_t	*door_txt;
+	mlx_texture_t	*txt;
+	mlx_texture_t	*pl_txt;
+	mlx_image_t		*default_img;
+	mlx_image_t		*tmp_img;
 	t_textures		textures;
 	t_player		player;
 	t_door			door;
@@ -131,7 +135,7 @@ typedef struct s_data
 	int				direct;
 	int				dor_h;
 	int				dor_v;
-	void			*weapon_frames[NUM_FRAMES];
+	void			**pl_imgs;
 	int				current_frame;
 }	t_data;
 
@@ -208,6 +212,12 @@ char			*ft_itoa(int n);
 void			load_weapon_images(t_data *data);
 int				is_alpha(char *c);
 void			terminate_mlx(t_data *data);
+//player
+
+void			init_player(t_data *data);
+void			display_pl_images(t_data *data, int i);
+void 			pl_animation(void *arg);
+
 // ft_open
 
 typedef struct s_fd_col

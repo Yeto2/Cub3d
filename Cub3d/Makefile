@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
+#    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/12/22 10:11:19 by lamhal           ###   ########.fr        #
+#    Updated: 2024/12/23 06:59:54 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc #-g -fsanitize=address
+CC = cc -g -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror -Iinclude
 MLX_LIB = MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 OBJ_DIR = obj
@@ -47,7 +47,7 @@ SRC_B = $(BONUS)/main_bonus.c $(BONUS)/utils/ft_split_bonus.c $(BONUS)/utils/get
 		$(BONUS)/parsing/esolate_check_bonus.c $(BONUS)/parsing/is_rounded_bonus.c $(BONUS)/parsing/prepare_bonus.c \
 		$(BONUS)/parsing/clean_bonus.c $(BONUS)/parsing/map_validity_bonus.c $(BONUS)/parsing/checkers__bonus.c $(BONUS)/utils/ft_strchr_bonus.c \
 		$(BONUS)/raycast/2dmap_bonus.c $(BONUS)/raycast/render_2d_bonus.c $(BONUS)/raycast/moves_bonus.c $(BONUS)/raycast/render3d_bonus.c $(BONUS)/parsing/color_handling_bonus.c \
-		$(BONUS)/raycast/find_intrs_bonus.c $(BONUS)/raycast/pos_angl_bonus.c $(BONUS)/raycast/ray_steps_bonus.c \
+		$(BONUS)/raycast/find_intrs_bonus.c $(BONUS)/raycast/player_bonus.c $(BONUS)/raycast/pos_angl_bonus.c $(BONUS)/raycast/ray_steps_bonus.c \
 		$(BONUS)/textures/texters_bonus.c $(BONUS)/textures/handlers_bonus.c \
 
 OBJ_B = $(SRC_B:$(BONUS)/%.c=$(BONUS)/%.o)
@@ -65,7 +65,7 @@ bonus: $(BUILD) $(NAME_BONUS)
 $(NAME_BONUS): $(OBJ_B)
 	@$(CC) $(CFLAGS) $(OBJ_B) $(MLX_LIB) -o $(NAME_BONUS)
 
-$(BONUS)/%.o: $(BONUS)/%.c $(BONUS)/cub3d.h
+$(BONUS)/%.o: $(BONUS)/%.c $(BONUS)/cub3D_bonus.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD):

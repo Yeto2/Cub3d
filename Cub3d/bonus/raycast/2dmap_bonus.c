@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/22 10:51:38 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/23 07:21:33 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,25 @@ void	clear_image(t_data *data)
 	}
 }
 
+
+void	move_mouse(double x_pos, double y_pos, void *arg) // move mouse function
+{
+	t_data	*data;
+	double	x;
+
+	(void) y_pos;
+	data = (t_data *)arg;
+	x = x_pos - (S_W / 2);
+	data->ang += x * 0.001;
+	mlx_set_mouse_pos(data->mlx.mlx_p, S_W / 2, S_H / 2);
+	printf("x = %f\n", x);
+}
+
+
 void	start_game(t_data *data)
 {
 	data->player = pos_in_map(data->player);
 	data->ang = set_angle(data->player);
-	data->mlx.mlx_p = mlx_init(S_W, S_H, "cub3d", 0);
-	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p, 450, 200);
-	data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
 	data->scale = calculate_scale(data);
 	data->unite = data->scale / TILE_SIZE;
 	clear_image(data);
@@ -62,8 +74,13 @@ void	start_game(t_data *data)
 	render_2d(data);
 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_r, 0, 0);
 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 10, 10);
+	data->default_img = mlx_texture_to_image(data->mlx.mlx_p, data->pl_txt);
+	mlx_image_to_window(data->mlx.mlx_p, data->default_img, 80, 40);
+	mlx_cursor_hook(data->mlx.mlx_p, move_mouse, &data); // mouse event still not working
+	mlx_loop_hook(data->mlx.mlx_p, pl_animation, data); // player animation need more work
 	mlx_loop_hook(data->mlx.mlx_p, handell_keys, data);
-	// mlx_cursor_hook(data->mlx.mlx_p, move_mouse, &data);
-	// mlx_set_cursor_mode(data->mlx.mlx_p, MLX_MOUSE_DISABLED);
+	mlx_set_cursor_mode(data->mlx.mlx_p, MLX_MOUSE_DISABLED);
 	mlx_loop(data->mlx.mlx_p);
 }
+
+
