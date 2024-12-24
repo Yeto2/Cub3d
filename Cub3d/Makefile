@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
+#    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/12/23 06:59:54 by yessemna         ###   ########.fr        #
+#    Updated: 2024/12/24 09:19:19 by lamhal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRC_B = $(BONUS)/main_bonus.c $(BONUS)/utils/ft_split_bonus.c $(BONUS)/utils/get
 		$(BONUS)/parsing/fill_map_data_bonus.c $(BONUS)/parsing/handlers_bonus.c $(BONUS)/utils/join_char_bonus.c $(BONUS)/utils/print_err_bonus.c \
 		$(BONUS)/parsing/esolate_check_bonus.c $(BONUS)/parsing/is_rounded_bonus.c $(BONUS)/parsing/prepare_bonus.c \
 		$(BONUS)/parsing/clean_bonus.c $(BONUS)/parsing/map_validity_bonus.c $(BONUS)/parsing/checkers__bonus.c $(BONUS)/utils/ft_strchr_bonus.c \
-		$(BONUS)/raycast/2dmap_bonus.c $(BONUS)/raycast/render_2d_bonus.c $(BONUS)/raycast/moves_bonus.c $(BONUS)/raycast/render3d_bonus.c $(BONUS)/parsing/color_handling_bonus.c \
+		$(BONUS)/raycast/2dmap_bonus.c $(BONUS)/raycast/2d_map_bonus.c $(BONUS)/raycast/moves_bonus.c $(BONUS)/raycast/render3d_bonus.c $(BONUS)/parsing/color_handling_bonus.c \
 		$(BONUS)/raycast/find_intrs_bonus.c $(BONUS)/raycast/player_bonus.c $(BONUS)/raycast/pos_angl_bonus.c $(BONUS)/raycast/ray_steps_bonus.c \
 		$(BONUS)/textures/texters_bonus.c $(BONUS)/textures/handlers_bonus.c \
 

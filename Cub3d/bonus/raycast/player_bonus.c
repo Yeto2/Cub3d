@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:33:17 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/23 09:10:09 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/24 20:30:32 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void pl_animation(void *arg)
 
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_SPACE))
 	{
+		// clear_image(data); // <--------- ??
+		mlx_delete_image(data->mlx.mlx_p, data->default_img);
 		if (data->pl_txt)
 			mlx_delete_texture((mlx_texture_t *)data->pl_txt);
 		is_pressed = true;
@@ -86,13 +88,6 @@ void pl_animation(void *arg)
 	{
 		
 		display_pl_images(data, i);
-		// if (rm_img)
-		// 	mlx_delete_image(data->mlx.mlx_p, rm_img);
-		// data->tmp_img = mlx_texture_to_image(data->mlx.mlx_p, data->pl_imgs[i]);
-		// if (!data->tmp_img)
-		// 	terminate_mlx(data);
-		// rm_img = data->tmp_img;
-		// mlx_image_to_window(data->mlx.mlx_p, data->tmp_img, 80, 40);
 		i++;
 	}
 	if (i == NUM_FRAMES)
@@ -100,6 +95,7 @@ void pl_animation(void *arg)
 		i = 0;
 		is_pressed = false;
 	}
+	// clear_image(data); // <--------- ?
 }
 
 void	init_player(t_data *data)

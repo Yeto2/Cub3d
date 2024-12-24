@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/23 04:26:44 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/24 16:02:20 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ typedef struct s_data
 	int				direct;
 	int				dor_h;
 	int				dor_v;
+	int				dor_open;
+	t_pos			dor_pos;
 	void			**pl_imgs;
 	int				current_frame;
 }	t_data;
@@ -281,4 +283,5 @@ void			handell_keys(void *pram);
 int				check_map(t_data *data, double x, double y);
 void			clear_image(t_data *data);
 void			render_2d(t_data *data);
+void			render_2d_map(t_data *data);
 #endif

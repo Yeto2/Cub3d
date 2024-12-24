@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:12:47 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/22 10:47:50 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/24 09:01:13 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	draw_rect(t_data *data, int x, int y, int scale)
 	else if (data->map.map[y][x] == '0')
 		data->clr = 0xFFFFFFFF;
 	i = 0;
-	while (i <= scale)
+	while (i < scale)
 	{
 		j = 0;
-		while (j <= scale)
+		while (j < scale)
 		{
-			mlx_put_pixel(data->mlx.img_m, tmp_x + i, tmp_y + j, data->clr);
+			// mlx_put_pixel(data->mlx.img_m, tmp_x + i, tmp_y + j, data->clr);
 			j++;
 		}
 		i++;

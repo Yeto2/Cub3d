@@ -6,7 +6,7 @@
 /*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/22 16:54:31 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/24 12:02:37 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 #  define BUFFER_SIZE 10
 # endif
 # define TILE_SIZE 64
-# define MOV_SPEED 5
-# define NUM_FRAMES 5
+# define MOV_SPEED 10
+# define NUM_FRAMES 10
 
 typedef struct s_map
 {
@@ -53,11 +53,6 @@ typedef struct s_color
 // 	right,
 // 	left
 // };
-typedef struct s_cor
-{
-	int	x;
-	int	y;
-}	t_cor;
 
 typedef struct s_pos
 {
