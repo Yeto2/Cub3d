@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/23 00:52:17 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/24 20:19:36 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_textures(t_data *data)
 	data->textures.ea = set_png_texture(data, data->ea);
 	data->textures.we = set_png_texture(data, data->we);
 	data->mlx.mlx_p = mlx_init(S_W, S_H, "cub3d", 0);
-	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p, 450, 200);
+	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p, 200, 200);
 	data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
 	data->pl_txt = set_png_texture(data, "./bonus/images/player/Stechkin01.png");
 	data->door_txt = set_png_texture(data, "./bonus/images/walls/door.png");
@@ -60,9 +60,9 @@ int	main(int ac, char const *av[])
 	if (prepare_data(&data))
 		return (ft_printf("Error\n"), 1);
 	esolate_check(&data);
+	// printf("--->%d",NUM_FRAMES );
 	init_player(&data);
 	init_textures(&data);
-
 	start_game(&data);
 	return (0);
 }
