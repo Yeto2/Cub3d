@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/25 11:44:52 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 17:07:30 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
-
-// int	calculate_scale(t_data *data)
-// {
-// 	int	scale;
-// 	int	width;
-// 	int	height;
-
-// 	width = round((float)(data->mlx.img_m)->width / data->map.map_w);
-// 	height = round((float)(data->mlx.img_m)->height / data->map.map_h);
-// 	if (width < height)
-// 		scale = width;
-// 	else
-// 		scale = height;
-// 	return (scale);
-// }
 
 uint32_t	get_coller(int r, int g, int b, int a)
 {
@@ -48,24 +33,23 @@ void	clear_image(t_data *data)
 	}
 }
 
-void    move_mouse(double xpos, double ypos, void *d)
+void	move_mouse(double xpos, double ypos, void *d)
 {
-    t_data        *data;
-    int			mouse_x = 0;
-	int			mouse_y = 0;
-	static int	mouse_x_old = 0;
+	t_data		*data;
+	int			mouse_x;
+	int			mouse_y;
+	static int	mouse_x_old;
 	int			move_mouse;
 
-    data = d;
-    (void)xpos;
-    (void)ypos;
+	data = d;
+	(void)xpos;
+	(void)ypos;
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_M))
 	{
 		if (data->abe_mouse == 1)
 			data->abe_mouse = 0;
 		else
 			data->abe_mouse = 1;
-
 	}
 	if (data->abe_mouse == 0)
 	{
@@ -73,7 +57,7 @@ void    move_mouse(double xpos, double ypos, void *d)
 	}
 	mlx_get_mouse_pos(data->mlx.mlx_p, &mouse_x, &mouse_y);
 	move_mouse = mouse_x - mouse_x_old;
-	data->ang += (double)(move_mouse) * 0.001;
+	data->ang += (double)(move_mouse) *0.001;
 	mouse_x_old = mouse_x;
 }
 
@@ -106,7 +90,8 @@ void	start_game(t_data *data)
 	render_2d_map(data);
 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_r, 0, 0);
 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 10, 10);
-	data->default_img = mlx_texture_to_image(data->mlx.mlx_p, data->pl_txt);
+	data->default_img = mlx_texture_to_image(data->mlx.mlx_p,
+			data->pl_txt);
 	mlx_image_to_window(data->mlx.mlx_p, data->default_img, 80, 40);
 	mlx_cursor_hook(data->mlx.mlx_p, move_mouse, data); // mouse event still not working
 	mlx_loop_hook(data->mlx.mlx_p, pl_animation, data); // player animation need more work
@@ -114,5 +99,3 @@ void	start_game(t_data *data)
 	mlx_set_cursor_mode(data->mlx.mlx_p, MLX_MOUSE_DISABLED);
 	mlx_loop(data->mlx.mlx_p);
 }
-
-

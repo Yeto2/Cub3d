@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 09:33:22 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 15:26:54 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 mlx_image_t	*set_image(t_data *data, mlx_texture_t *textures)
 {
 	mlx_image_t	*img;
-	
-	if(!textures)
+
+	if (!textures)
 		print_err("failed to load texture\n"); // here
 	img = mlx_texture_to_image(data->mlx.mlx_p, textures);
 	if (!img)
@@ -34,7 +34,8 @@ void	init_textures(t_data *data)
 	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p, 200, 200);
 	data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
 	// data->mlx.img_p = mlx_new_image(data->mlx.mlx_p, 200, 200);
-	data->pl_txt = set_png_texture(data, "./bonus/images/player/Stechkin01.png");
+	data->pl_txt = set_png_texture(data,
+			"./bonus/images/player/Stechkin01.png");
 	data->door_txt = set_png_texture(data, "./bonus/images/walls/door.png");
 	data->default_img = set_image(data, data->pl_txt);
 }
@@ -47,7 +48,7 @@ void	init_textures(t_data *data)
 int	main(int ac, char const *av[])
 {
 	t_data	data;
-	
+
 	// atexit(f);
 	if (ac != 2)
 		print_err("Error\n");

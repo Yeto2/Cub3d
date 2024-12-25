@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 11:45:40 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 15:23:25 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <stdio.h>
 # include <stdbool.h>
@@ -222,8 +222,8 @@ void			terminate_mlx(t_data *data);
 
 void			init_player(t_data *data);
 void			display_pl_images(t_data *data, int i);
-void 			pl_animation(void *arg);
-void    		move_mouse(double xpos, double ypos, void *d);
+void			pl_animation(void *arg);
+void			move_mouse(double xpos, double ypos, void *d);
 
 // ft_open
 

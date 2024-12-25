@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 03:48:28 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 15:18:32 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #  define BUFFER_SIZE 10
 # endif
 # define TILE_SIZE 64
-# define MOV_SPEED 10
+# define MOV_SPEED 7
 # define NUM_FRAMES 10
 
 typedef struct s_map

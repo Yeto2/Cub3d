@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handlers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 23:32:11 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/24 23:43:07 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 14:37:38 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 mlx_texture_t	*set_png_texture(t_data *data, char *path)
 {
 	mlx_texture_t	*texture;
-	(void)data;
+	
+	// (void)data;
 	texture = mlx_load_png(path);
 	if (texture == NULL)
 	{
