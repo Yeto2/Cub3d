@@ -35,16 +35,12 @@ void	move_front_back(t_data *data, int dirc)
 	pos.y = data->player.y + dirc * MOV_SPEED * sin(data->ang);
 	check.x = data->player.x + dirc * dst_to_wall * cos(data->ang);
 	check.y = data->player.y + dirc * dst_to_wall * sin(data->ang);
-	// if (check_map(data, pos.x, pos.y) && check_map(data, check.x, check.y)
-	// 	&& check_map(data, data->player.x, check.y) && check_map(data, check.x, data->player.y))
-	// {
-	// 	data->player.x = pos.x;
-	// 	data->player.y = pos.y;
-	// }
-    if (check_map(data, data->player.x, pos.y) && check_map(data, data->player.x, check.y))
-        data->player.y = pos.y;
-    if (check_map(data, pos.x, data->player.y) && check_map(data, check.x, data->player.y))
-        data->player.x = pos.x;
+	if (check_map(data, data->player.x, pos.y)
+		&& check_map(data, data->player.x, check.y))
+		data->player.y = pos.y;
+	if (check_map(data, pos.x, data->player.y)
+		&& check_map(data, check.x, data->player.y))
+		data->player.x = pos.x;
 }
 
 void	move_right_left(t_data *data, int dirc)
@@ -58,16 +54,12 @@ void	move_right_left(t_data *data, int dirc)
 	pos.y = data->player.y + MOV_SPEED * sin(data->ang + dirc * M_PI / 2);
 	check.y = data->player.y + dst_to_wall * sin(data->ang + dirc * M_PI / 2);
 	check.x = data->player.x + dst_to_wall * cos(data->ang + dirc * M_PI / 2);
-	// if (check_map(data, pos.x, pos.y) && check_map(data, check.x, check.y)
-	// 	&& check_map(data, data->player.x, check.y) && check_map(data, check.x, data->player.y))
-	// {
-	// 	data->player.x = pos.x;
-	// 	data->player.y = pos.y;
-	// }
-    if (check_map(data, data->player.x, pos.y) && check_map(data, data->player.x, check.y))
-        data->player.y = pos.y;
-    if (check_map(data, pos.x, data->player.y) && check_map(data, check.x, data->player.y))
-        data->player.x = pos.x;
+	if (check_map(data, data->player.x, pos.y)
+		&& check_map(data, data->player.x, check.y))
+		data->player.y = pos.y;
+	if (check_map(data, pos.x, data->player.y)
+		&& check_map(data, check.x, data->player.y))
+		data->player.x = pos.x;
 }
 
 void	open_dor(t_data *data)
@@ -88,16 +80,8 @@ void	open_dor(t_data *data)
 		data->dor_pos.x = i;
 		data->dor_pos.y = j;
 		data->map.map[j][i] = 'O';
-		data->dor_open = 1; 
+		data->dor_open = 1;
 	}
-	// i = data->player.x / TILE_SIZE;
-	// j = data->player.y / TILE_SIZE;
-	// if (data->map.map[j][i] == 'C')
-	// {
-	// 	data->dor_pos = check;
-	// 	data->map.map[j][i] = 'O';
-	// 	data->dor_open = 1; 
-	// }
 }
 
 void	close_dor(t_data *data)
@@ -107,12 +91,12 @@ void	close_dor(t_data *data)
 
 	pos.x = data->dor_pos.x * TILE_SIZE + TILE_SIZE / 2;
 	pos.y = data->dor_pos.y * TILE_SIZE + TILE_SIZE / 2;
-	dst_to_close = sqrt(pow(data->player.x - pos.x, 2) + pow(data->player.y - pos.y, 2));
-	// printf("cc\n");
+	dst_to_close = sqrt(pow(data->player.x - pos.x, 2)
+			+ pow(data->player.y - pos.y, 2));
 	if (data->dor_open == 0)
 		return ;
-	if (!(data->player.x/ TILE_SIZE == data->dor_pos.x
-		&& data->player.y/ TILE_SIZE == data->dor_pos.y)
+	if (!(data->player.x / TILE_SIZE == data->dor_pos.x
+			&& data->player.y / TILE_SIZE == data->dor_pos.y)
 		&& dst_to_close > 90)
 	{
 		data->map.map[(int)data->dor_pos.y][(int)data->dor_pos.x] = 'C';
@@ -148,5 +132,5 @@ void	handell_keys(void *pram)
 	clear_image(data);
 	ray_cast(data);
 	render_2d_map(data);
-	// render_2d(data);
+	// render_2d(data);  /* old 2d map */
 }

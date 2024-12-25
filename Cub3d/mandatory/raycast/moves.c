@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 09:21:56 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/25 09:40:52 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 14:36:40 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,12 @@ void	move_front_back(t_data *data, int dirc)
 	pos.y = data->player.y + dirc * MOV_SPEED * sin(data->ang);
 	check.x = data->player.x + dirc * dst_to_wall * cos(data->ang);
 	check.y = data->player.y + dirc * dst_to_wall * sin(data->ang);
-	// if (check_map(data, pos.x, pos.y) && check_map(data, check.x, check.y))
-	// {
-	// 	data->player.x = pos.x;
-	// 	data->player.y = pos.y;
-	// }
-    if (check_map(data, data->player.x, pos.y) && check_map(data, data->player.x, check.y))
-        data->player.y = pos.y;
-    if (check_map(data, pos.x, data->player.y) && check_map(data, check.x, data->player.y))
-        data->player.x = pos.x;
+	if (check_map(data, data->player.x, pos.y)
+		&& check_map(data, data->player.x, check.y))
+		data->player.y = pos.y;
+	if (check_map(data, pos.x, data->player.y)
+		&& check_map(data, check.x, data->player.y))
+		data->player.x = pos.x;
 }
 
 void	move_right_left(t_data *data, int dirc)
@@ -57,15 +54,12 @@ void	move_right_left(t_data *data, int dirc)
 	pos.y = data->player.y + MOV_SPEED * sin(data->ang + dirc * M_PI / 2);
 	check.y = data->player.y + dst_to_wall * sin(data->ang + dirc * M_PI / 2);
 	check.x = data->player.x + dst_to_wall * cos(data->ang + dirc * M_PI / 2);
-	// if (check_map(data, pos.x, pos.y) && check_map(data, check.x, check.y))
-	// {
-	// 	data->player.x = pos.x;
-	// 	data->player.y = pos.y;
-	// }
-    if (check_map(data, data->player.x, pos.y) && check_map(data, data->player.x, check.y))
-        data->player.y = pos.y;
-    if (check_map(data, pos.x, data->player.y) && check_map(data, check.x, data->player.y))
-        data->player.x = pos.x;
+	if (check_map(data, data->player.x, pos.y)
+		&& check_map(data, data->player.x, check.y))
+		data->player.y = pos.y;
+	if (check_map(data, pos.x, data->player.y)
+		&& check_map(data, check.x, data->player.y))
+		data->player.x = pos.x;
 }
 
 void	handell_keys(void *pram)

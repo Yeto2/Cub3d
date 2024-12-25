@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/24 23:43:25 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 14:39:38 by lamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int	calculate_scale(t_data *data)
-{
-	int	scale;
-	int	width;
-	int	height;
-
-	width = round((float)(data->mlx.img_m)->width / data->map.map_w);
-	height = round((float)(data->mlx.img_m)->height / data->map.map_h);
-	if (width < height)
-		scale = width;
-	else
-		scale = height;
-	return (scale);
-}
 
 uint32_t	get_coller(int r, int g, int b, int a)
 {
@@ -65,7 +50,6 @@ void	start_game(t_data *data)
 		terminate_mlx(data);
 		print_err("Error\nimage failed to load");
 	}
-	//data->scale = calculate_scale(data);
 	data->unite = data->scale / TILE_SIZE;
 	clear_image(data);
 	ray_cast(data);
