@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 14:39:44 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 15:54:24 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/25 00:11:17 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	delete_texture(mlx_texture_t *texture)
 
 void	terminate_mlx(t_data *data)
 {
-	delete_texture(data->texture);
 	delete_texture(data->textures.ea);
 	delete_texture(data->textures.no);
 	delete_texture(data->textures.so);
@@ -36,7 +35,5 @@ void	terminate_mlx(t_data *data)
 	delete_image(data->mlx.mlx_p, data->mlx.img_m);
 	delete_image(data->mlx.mlx_p, data->mlx.img_p);
 	mlx_terminate(data->mlx.mlx_p);
-	// g_malloc(0, FREE);
-	// ft_malloc(FREE, FREE);
 	exit(EXIT_FAILURE);
 }

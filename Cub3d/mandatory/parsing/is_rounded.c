@@ -6,33 +6,62 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:42:30 by yessemna          #+#    #+#             */
-/*   Updated: 2024/10/31 21:02:23 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 07:56:21 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	first_and_last(char *first, char *last)
+char	*trim_first_last(char *str)
 {
 	int	i;
+	int	j;
+	char	*new;
 
 	i = 0;
-	while (first[i])
-	{
-		while (first[i] == ' ')
-			i++;
-		if (first[i] != '1')
-			return (1);
+	j = 0;
+	while (str[i] == ' ')
 		i++;
+	while (str[i])
+		i++;
+	i--;
+	while (str[i] == ' ')
+		i--;
+	new = g_malloc(sizeof(char) * (i + 2), MALLOC);
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (str[i] == ' ')
+		i++;
+	while (str[i])
+		new[j++] = str[i++];
+	new[j] = '\0';
+	return (new);
+}
+
+int	first_and_last(char *first, char *last)
+{
+	int		i;
+	char	*trimed_first;
+	char	*trimed_last;
+
+	i = 0;
+	trimed_first = trim_first_last(first);
+	trimed_last = trim_first_last(last);
+	while(trimed_first[i])
+	{
+		if (trimed_first[i] == '1' || trimed_first[i] == ' ')
+			i++;
+		else
+			return (1);
 	}
 	i = 0;
-	while (last[i])
+	while(trimed_last[i])
 	{
-		while (last[i] == ' ')
+		if (trimed_last[i] == '1' || trimed_last[i] == ' ')
 			i++;
-		if (last[i] != '1')
+		else
 			return (1);
-		i++;
 	}
 	return (0);
 }

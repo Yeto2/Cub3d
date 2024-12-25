@@ -135,7 +135,7 @@ void	handell_keys(void *pram)
 		move_right_left(data, 1);
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_ESCAPE))
 	{
-		// terminate_mlx(data);
+		terminate_mlx(data);
 		exit(EXIT_SUCCESS);
 	}
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_LEFT))

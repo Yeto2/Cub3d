@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/22 09:37:34 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/24 23:43:25 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	start_game(t_data *data)
 	data->mlx.img_m = mlx_new_image(data->mlx.mlx_p, 450, 200);
 	if (data->mlx.img_m == NULL)
 	{
-		// terminate_mlx(data);
+		terminate_mlx(data);
 		print_err("Error\nimage failed to load");
 	}
 	data->mlx.img_r = mlx_new_image(data->mlx.mlx_p, S_W, S_H);
 	if (data->mlx.img_r == NULL)
 	{
-		// terminate_mlx(data);
+		terminate_mlx(data);
 		print_err("Error\nimage failed to load");
 	}
 	//data->scale = calculate_scale(data);

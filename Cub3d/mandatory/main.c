@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/22 09:17:46 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/24 23:44:18 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int	main(int ac, char const *av[])
 	esolate_check(&data);
 	init_textures(&data);
 	start_game(&data);
+	terminate_mlx(&data);
 	return (0);
 }

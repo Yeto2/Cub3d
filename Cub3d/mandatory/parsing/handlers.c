@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:35:01 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/19 14:19:13 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 03:48:44 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,30 @@ void	flooor(t_data **data, int *r, int *g, int *b)
 	(*data)->floor.b = *b;
 }
 
+void	sc(char *color, t_var var)
+{
+	var.j = 0;
+	var.sc = 0;
+	while (color[var.j])
+	{
+		if (color[var.j] == ',')
+			var.sc++;
+		var.j++;
+	}
+	if (var.sc != 2)
+		print_err("Invalid color");
+}
+
 void	handle_color(char *color, char type, t_data **data)
 {
 	t_var	var;
 
 	(1) && (var.tmp = NULL, var.i = 0, var.r = 0, var.g = 0, var.b = 0);
+	sc(color, var);
 	var.tmp = ft_split(color, ',');
 	if (!var.tmp)
 		print_err("Invalid color");
-	while (var.tmp[var.i])
+	while (var.tmp[++var.i])
 	{
 		if (is_alpha(var.tmp[var.i]))
 			print_err("Invalid color");
@@ -97,7 +112,6 @@ void	handle_color(char *color, char type, t_data **data)
 			var.g = ft_atoi(var.tmp[var.i]);
 		else if (var.i == 2)
 			var.b = ft_atoi(var.tmp[var.i]);
-		var.i++;
 	}
 	if (var.i != 3)
 		print_err("Invalid color");

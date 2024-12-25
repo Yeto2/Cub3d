@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2dmap_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/24 20:11:04 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/25 11:44:52 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,48 @@ void	clear_image(t_data *data)
 	}
 }
 
-
-void	move_mouse(double x_pos, double y_pos, void *arg) // move mouse function
+void    move_mouse(double xpos, double ypos, void *d)
 {
-	t_data	*data;
-	double	x;
+    t_data        *data;
+    int			mouse_x = 0;
+	int			mouse_y = 0;
+	static int	mouse_x_old = 0;
+	int			move_mouse;
 
-	(void) y_pos;
-	data = (t_data *)arg;
-	x = x_pos - (S_W / 2);
-	data->ang += x * 0.001;
-	mlx_set_mouse_pos(data->mlx.mlx_p, S_W / 2, S_H / 2);
-	printf("x = %f\n", x);
+    data = d;
+    (void)xpos;
+    (void)ypos;
+	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_M))
+	{
+		if (data->abe_mouse == 1)
+			data->abe_mouse = 0;
+		else
+			data->abe_mouse = 1;
+
+	}
+	if (data->abe_mouse == 0)
+	{
+		return ;
+	}
+	mlx_get_mouse_pos(data->mlx.mlx_p, &mouse_x, &mouse_y);
+	move_mouse = mouse_x - mouse_x_old;
+	data->ang += (double)(move_mouse) * 0.001;
+	mouse_x_old = mouse_x;
 }
 
+// void 	enable_mouse(int keycode, void *d)
+// {
+// 	t_data	*data;
+
+// 	data = d;
+// 	if (keycode == MLX_KEY_M)
+// 	{
+// 		if (data->abe_mouse == 1)
+// 			data->abe_mouse = 0;
+// 		else
+// 			data->abe_mouse = 1;
+// 	}
+// }
 
 void	start_game(t_data *data)
 {
@@ -70,15 +98,17 @@ void	start_game(t_data *data)
 	data->scale = 20;
 	data->unite = data->scale / TILE_SIZE;
 	data->dor_open = 0;
+	data->abe_mouse = 1;
 	clear_image(data);
 	ray_cast(data);
 	// render_2d(data);
+	// mlx_key_hook(data->mlx.mlx_p, enable_mouse, data);
 	render_2d_map(data);
 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_r, 0, 0);
 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 10, 10);
 	data->default_img = mlx_texture_to_image(data->mlx.mlx_p, data->pl_txt);
 	mlx_image_to_window(data->mlx.mlx_p, data->default_img, 80, 40);
-	// mlx_cursor_hook(data->mlx.mlx_p, move_mouse, &data); // mouse event still not working
+	mlx_cursor_hook(data->mlx.mlx_p, move_mouse, data); // mouse event still not working
 	mlx_loop_hook(data->mlx.mlx_p, pl_animation, data); // player animation need more work
 	mlx_loop_hook(data->mlx.mlx_p, handell_keys, data);
 	mlx_set_cursor_mode(data->mlx.mlx_p, MLX_MOUSE_DISABLED);

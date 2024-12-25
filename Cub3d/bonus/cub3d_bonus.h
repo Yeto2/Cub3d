@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/24 16:02:20 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/25 11:45:40 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #  define BUFFER_SIZE 10
 # endif
 # define TILE_SIZE 64
-# define MOV_SPEED 5
+# define MOV_SPEED 7
 # define NUM_FRAMES 68
 
 typedef struct s_map
@@ -139,6 +139,7 @@ typedef struct s_data
 	t_pos			dor_pos;
 	void			**pl_imgs;
 	int				current_frame;
+	int				abe_mouse;
 }	t_data;
 
 typedef struct s_list
@@ -150,6 +151,8 @@ typedef struct s_list
 typedef struct s_var
 {
 	char	**tmp;
+	int		j;
+	int		sc;
 	int		i;
 	int		r;
 	int		g;
@@ -214,11 +217,13 @@ char			*ft_itoa(int n);
 void			load_weapon_images(t_data *data);
 int				is_alpha(char *c);
 void			terminate_mlx(t_data *data);
+// char			*trim_first_last(char *str);
 //player
 
 void			init_player(t_data *data);
 void			display_pl_images(t_data *data, int i);
 void 			pl_animation(void *arg);
+void    		move_mouse(double xpos, double ypos, void *d);
 
 // ft_open
 

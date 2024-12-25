@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   esolate_check_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:37:44 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 17:30:09 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/25 06:02:04 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,6 @@ void	set_dementions(t_data **data, int height, size_t width)
 {
 	(*data)->map.map_h = height;
 	(*data)->map.map_w = width;
-	// int i = 0; // <-----
-	// int j = 0;
-	// while ((*data)->map.map[i])
-	// {
-	// 	j = 0;
-	// 	while ((*data)->map.map[i][j])
-	// 	{
-	// 		if ((*data)->map.map[i][j] == 'D')
-	// 			printf("Door found at %d %d\n", i, j);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
 	if (check_map_validity(data))
 		print_err("Invalid map data"); // nahi hogaya
 	if (parse_doors(data))
@@ -86,8 +73,6 @@ void	esolate_check(t_data *data)
 	init_data_vars(&data);
 	while (data->map_dtls[i] && ++j < 6)
 		prepare(data->map_dtls[i++], &data);
-	if (data->map_dtls[j] && data->map_dtls[j][0] != '1')
-		print_err("Invalid map data");
 	while (data->map_dtls[j++])
 		height++;
 	data->map.map = g_malloc(sizeof(char *) * (height + 1), MALLOC);

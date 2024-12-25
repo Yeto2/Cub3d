@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:33:17 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/24 20:30:32 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/24 23:49:15 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,11 @@ void pl_animation(void *arg)
 			mlx_delete_texture((mlx_texture_t *)data->pl_txt);
 		is_pressed = true;
 		data->pl_txt = mlx_load_png("./bonus/images/player/Stechkin01.png");
-		if (!data->default_img)
+		if (!data->pl_txt)
+		{
 			terminate_mlx(data);
+			print_err("Error\nfailed to load png");
+		}
 	}
 	if (is_pressed)
 	{

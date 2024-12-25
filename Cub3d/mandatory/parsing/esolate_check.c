@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:37:44 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/21 01:05:54 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/25 03:46:48 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	esolate_check(t_data *data)
 	init_data_vars(&data);
 	while (data->map_dtls[i] && ++j < 6)
 		prepare(data->map_dtls[i++], &data);
-	if (data->map_dtls[j] && data->map_dtls[j][0] != '1')
-		print_err("Invalid map data");
 	while (data->map_dtls[j++])
 		height++;
 	data->map.map = g_malloc(sizeof(char *) * (height + 1), MALLOC);
