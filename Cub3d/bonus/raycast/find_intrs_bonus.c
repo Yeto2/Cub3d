@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   find_intrs_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 19:32:37 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/24 11:45:26 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/26 05:37:46 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 
-int	hitt_wall(double i, double j, t_data *data, int ver)// <----- to check c is hitted
+int	hitt_wall(double i, double j, t_data *data, int ver)
 {
 	int	x;
 	int	y;

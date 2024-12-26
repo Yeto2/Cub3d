@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:33:17 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/24 23:49:15 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 04:31:17 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,13 @@ void	free_and_exit(t_data *data, int i)
 	while (--i >= 0)
 		mlx_delete_texture((mlx_texture_t *)data->pl_imgs[i]);
 	free(data->pl_imgs);
-	// ft_malloc(FREE, FREE);
 	exit(EXIT_FAILURE);
-}
-
-void    ft_strcut(char *str, char *cut)
-{
-    int i;
-    int j;
-
-    i = 0;
-    j = 0;
-    while (str[i])
-        i++;
-    while (cut[j])
-    {
-        str[i] = cut[j];
-        i++;
-        j++;
-    }
-    str[i] = '\0';
-}
-
-void    ft_strcpy(char *dst, const char *src)
-{
-    int i;
-
-    i = 0;
-    while (src[i])
-    {
-        dst[i] = src[i];
-        i++;
-    }
-    dst[i] = '\0';
 }
 
 void	display_pl_images(t_data *data, int i)
 {
 	static mlx_image_t	*rm_img;
-	
+
 	if (rm_img)
 		mlx_delete_image(data->mlx.mlx_p, rm_img);
 	data->tmp_img = mlx_texture_to_image(data->mlx.mlx_p, data->pl_imgs[i]);
@@ -65,17 +33,15 @@ void	display_pl_images(t_data *data, int i)
 	mlx_image_to_window(data->mlx.mlx_p, data->tmp_img, 80, 40);
 }
 
-void pl_animation(void *arg)
+void	pl_animation(void *arg)
 {
-	t_data	*data;
+	t_data		*data;
+	static int	i = 0;
+	static bool	is_pressed = false;
 
 	data = (t_data *)arg;
-	static int i = 0;
-	static bool is_pressed = false;
-
 	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_SPACE))
 	{
-		// clear_image(data); // <--------- ??
 		mlx_delete_image(data->mlx.mlx_p, data->default_img);
 		if (data->pl_txt)
 			mlx_delete_texture((mlx_texture_t *)data->pl_txt);
@@ -88,17 +54,12 @@ void pl_animation(void *arg)
 		}
 	}
 	if (is_pressed)
-	{
-		
-		display_pl_images(data, i);
-		i++;
-	}
+		display_pl_images(data, i++);
 	if (i == NUM_FRAMES)
 	{
 		i = 0;
 		is_pressed = false;
 	}
-	// clear_image(data); // <--------- ?
 }
 
 void	init_player(t_data *data)
@@ -108,7 +69,7 @@ void	init_player(t_data *data)
 	int		i;
 
 	i = 0;
-	data->pl_imgs = (void **)malloc(sizeof(void *) * (NUM_FRAMES + 1));
+	data->pl_imgs = g_malloc(sizeof(void *) * (NUM_FRAMES + 1), MALLOC);
 	if (!data->pl_imgs)
 		(print_err("Error\nMalloc failed"));
 	while (i < NUM_FRAMES)

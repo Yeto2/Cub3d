@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:42:30 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 07:56:06 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 02:46:36 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*trim_first_last(char *str)
 {
-	int	i;
-	int	j;
 	char	*new;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -48,7 +48,7 @@ int	first_and_last(char *first, char *last)
 	i = 0;
 	trimed_first = trim_first_last(first);
 	trimed_last = trim_first_last(last);
-	while(trimed_first[i])
+	while (trimed_first[i])
 	{
 		if (trimed_first[i] == '1' || trimed_first[i] == ' ')
 			i++;
@@ -56,7 +56,7 @@ int	first_and_last(char *first, char *last)
 			return (1);
 	}
 	i = 0;
-	while(trimed_last[i])
+	while (trimed_last[i])
 	{
 		if (trimed_last[i] == '1' || trimed_last[i] == ' ')
 			i++;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_map_data.c                                    :+:      :+:    :+:   */
+/*   fill_map_data_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:17:54 by yessemna          #+#    #+#             */
-/*   Updated: 2024/11/01 12:53:49 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 06:44:25 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*read_line(int fd)
 	return (line);
 }
 
-int	fill_map_data(t_data *data)
+int	fill_map_data(t_data *data, t_fd_col *collector)
 {
 	char	*last_line;
 	char	*line;
@@ -51,11 +51,11 @@ int	fill_map_data(t_data *data)
 	int		fd;
 
 	i = 0;
-	fd = open((data)->map_path, O_RDONLY, 0666);
+	fd = ft_open(collector, (data)->map_path, O_RDONLY, 0666);
 	if (fd == -1)
 		print_err("cannot open rhe map file");
-	(data)->data_map = g_malloc(sizeof(char *) * (count_lines(data) + 1),
-			MALLOC);
+	(data)->data_map = g_malloc(sizeof(char *) * (count_lines(data,
+					collector) + 1), MALLOC);
 	if (!(data)->data_map)
 		print_err("malloc failed");
 	line = read_line(fd);

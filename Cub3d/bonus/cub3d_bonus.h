@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 15:23:25 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/26 06:59:48 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_BONUS_H
+#ifndef CUB3D_BONUS_H  
 # define CUB3D_BONUS_H
 
 # include <stdio.h>
@@ -46,13 +46,7 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
-// enum deriction
-// {
-// 	up,
-// 	dwn,
-// 	right,
-// 	left
-// };
+
 typedef struct s_cor
 {
 	int	x;
@@ -151,6 +145,8 @@ typedef struct s_list
 typedef struct s_var
 {
 	char	**tmp;
+	bool	lr_door;
+	bool	tb_door;
 	int		j;
 	int		sc;
 	int		i;
@@ -162,6 +158,7 @@ typedef struct s_var
 typedef struct s_render_var
 {
 	uint32_t		*p_clrs;
+	t_textures		*textures;
 	double			wall_hght;
 	double			dst;
 	int				top;
@@ -171,6 +168,12 @@ typedef struct s_render_var
 	int				color;
 }	t_render_var;
 
+typedef struct s_fd_col
+{
+	int	fds[OPEN_MAX];
+	int	count;
+}	t_fd_col;
+
 // parsing
 uint32_t		get_coller(int r, int g, int b, int a);
 mlx_texture_t	*set_png_texture(t_data *data, char *path);
@@ -178,12 +181,12 @@ mlx_texture_t	*return_texture(t_data *data, t_textures *textures, double ray);
 void			init_data_vars(t_data **data);
 void			check_extention(const char *file);
 void			handle_color(char *color, char type, t_data **data);
-int				fill_map_data(t_data *data);
+int				fill_map_data(t_data *data, t_fd_col *collector);
 int				skip_spc_check(char *line);
 int				valid_letter(char *line);
 int				check_if_valid(t_data *data);
 int				prepare_data(t_data *data);
-int				count_lines(t_data *data);
+int				count_lines(t_data *data, t_fd_col *collector);
 int				wsnecf10(char c);
 int				dir(char c);
 char			*join_char(char *str, char c);
@@ -220,18 +223,16 @@ void			terminate_mlx(t_data *data);
 // char			*trim_first_last(char *str);
 //player
 
+int				prepare_data(t_data *data);
 void			init_player(t_data *data);
 void			display_pl_images(t_data *data, int i);
 void			pl_animation(void *arg);
 void			move_mouse(double xpos, double ypos, void *d);
-
+void			open_dor(t_data *data);
+void			close_dor(t_data *data);
+void			ft_strcpy(char *dst, const char *src);
+void			ft_strcut(char *str, char *cut);
 // ft_open
-
-typedef struct s_fd_col
-{
-	int	fds[OPEN_MAX];
-	int	count;
-}	t_fd_col;
 
 void			init_fd_collector(t_fd_col *collector);
 int				ft_open(t_fd_col *collector,
@@ -271,8 +272,6 @@ void			ft_hexap(unsigned long long n, int *count, char *HEXA_);
 
 // bresnhamm
 t_player		pos_in_map(t_player pl);
-// void		draw_line(t_cor a, t_cor b, t_data *data, int stuts);
-// void		draw_map(t_data *data);
 void			start_game(t_data *data);
 void			ray_cast(t_data	*data);
 double			ft_normalize(double ang);
@@ -287,6 +286,5 @@ void			render(t_data *data, double ray, int i);
 void			handell_keys(void *pram);
 int				check_map(t_data *data, double x, double y);
 void			clear_image(t_data *data);
-void			render_2d(t_data *data);
 void			render_2d_map(t_data *data);
 #endif

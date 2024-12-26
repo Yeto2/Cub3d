@@ -1,8 +1,8 @@
         SO ./mandatory/images/walls/s.png
 WE     ./mandatory/images/walls/w.png
 EA ./mandatory/images/walls/e.png
-C 0,0,10
-F                          0,25,255          
+C 80,20,0
+F                          10,20,40          
 NO ./mandatory/images/walls/n.png
 
 

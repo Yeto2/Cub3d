@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:37:19 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/20 02:52:26 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 04:18:26 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_itoa(int n)
 	dcount = count_digit(n) + sign;
 	if (n == 0)
 		dcount = 1;
-	res = (char *)malloc(sizeof(char) * (dcount + 1));
+	res = g_malloc(sizeof(char) * (dcount + 1), MALLOC);
 	if (!res)
 		return (0);
 	res[dcount] = '\0';

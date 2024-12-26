@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texters_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:59:59 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/22 16:58:43 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/26 05:35:24 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,16 @@ void	func(t_data *data, t_render_var *t, double ray, mlx_texture_t *txt)
 	t->j = 0;
 }
 
-// void set_door_texture(t_data *data, t_render_var t)
-// {
-// 	t->p_clrs = (uint32_t *)txt->pixels;
-// }
-
 void	render(t_data *data, double ray, int i)
 {
 	mlx_texture_t	*txt;
-	t_textures		*textures;
 	t_render_var	t;
 
-	textures = &data->textures;
-	// set_door_texture(data, t);
+	t.textures = &data->textures;
 	if ((data->hor && data->dor_h) || (!data->hor && data->dor_v))
 		txt = data->door_txt;
-	else 
-		txt = return_texture(data, textures, ray);
+	else
+		txt = return_texture(data, t.textures, ray);
 	func(data, &t, ray, txt);
 	while (t.j < S_H)
 	{

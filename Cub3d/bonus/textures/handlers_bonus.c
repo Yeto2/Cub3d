@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handlers_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 23:32:11 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/22 16:53:39 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/26 05:31:05 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 mlx_texture_t	*set_png_texture(t_data *data, char *path)
 {
 	mlx_texture_t	*texture;
-	(void)data; // to destroy images later
+
 	texture = mlx_load_png(path);
 	if (texture == NULL)
-		write(2, "Error\nfaild to load png", 24);
+	{
+		terminate_mlx(data);
+		print_err("faild to load png");
+	}
 	return (texture);
 }
 

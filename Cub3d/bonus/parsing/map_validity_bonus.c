@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:05:49 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 06:18:54 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 02:56:28 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	find_player(t_data **data)
 					(*data)->player.dir = (*data)->map.map[i][j],
 					(*data)->map.map[i][j] = '0');
 			}
-			// else if (ft_isalpha((*data)->map.map[i][j]))
-			// 	return (1);
 		}
 	}
 	if (player > 1 || player == 0)

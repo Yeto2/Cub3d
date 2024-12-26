@@ -6,48 +6,38 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:37:44 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 06:02:04 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 05:00:31 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 
-int parse_doors(t_data **data)
+int	parse_doors(t_data **data)
 {
-	t_data *tmp;
-	int i;
-	int j;
-	bool lr_door;
-	bool tb_door;
-	
-	tmp = *data;
-	i = 0;
-	lr_door = false;
-	tb_door = false;
-	while( i < tmp->map.map_h)
+	t_var	v;
+
+	(1) && (v.i = 0, v.lr_door = false, v.tb_door = false);
+	while (v.i < (*data)->map.map_h)
 	{
-		j = 0;
-		while (j < tmp->map.map_w)
+		v.j = 0;
+		while (v.j++ < (*data)->map.map_w)
 		{
-			if ((*data)->map.map[i][j] == 'C')
+			if ((*data)->map.map[v.i][v.j] == 'C')
 			{
-				printf("--> Door found at %d %d\n", i, j);
-				if ((*data)->map.map[i][j + 1] == '1' && (*data)->map.map[i][j - 1] == '1')
-					lr_door = true;
-				else if ((*data)->map.map[i + 1][j] == '1' && (*data)->map.map[i - 1][j] == '1')
-					tb_door = true;
-				
-				if (!lr_door && !tb_door)
+				if ((*data)->map.map[v.i][v.j + 1] == '1'
+					&& (*data)->map.map[v.i][v.j - 1] == '1')
+					v.lr_door = true;
+				else if ((*data)->map.map[v.i + 1][v.j] == '1'
+					&& (*data)->map.map[v.i - 1][v.j] == '1')
+					v.tb_door = true;
+				if (!v.lr_door && !v.tb_door)
 					print_err("door position is invalid");
-				// (*data)->map.map[i][j] = '0'; // set door to 0
 			}
-			else if (ft_isalpha((*data)->map.map[i][j]))
+			else if (ft_isalpha((*data)->map.map[v.i][v.j]))
 				return (1);
-			j++;
 		}
-		i++;
+		v.i++;
 	}
-	// in this function i store the position of the doors
 	return (0);
 }
 
@@ -56,7 +46,7 @@ void	set_dementions(t_data **data, int height, size_t width)
 	(*data)->map.map_h = height;
 	(*data)->map.map_w = width;
 	if (check_map_validity(data))
-		print_err("Invalid map data"); // nahi hogaya
+		print_err("Invalid map data");
 	if (parse_doors(data))
 		print_err("Invalid map data 'doors'");
 }

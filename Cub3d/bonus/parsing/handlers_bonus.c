@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:35:01 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 03:36:10 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 07:17:43 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,6 @@ int	check_if_valid(t_data *data)
 		else
 			return (1);
 	}
-	return (0);
-}
-
-int	prepare_data(t_data *data)
-{
-	int	i;
-	int	j;
-	int	len;
-
-	(1) && (i = 0, j = 0, len = 0);
-	while ((data)->data_map[i])
-	{
-		if (!valid_letter((data)->data_map[i]) || !(data)->data_map[i][0])
-			len++;
-		else if (!null_check((data)->data_map[i]))
-			print_err("Invalid map data");
-		i++;
-	}
-	(data)->map_dtls = g_malloc(sizeof(char *) * (len + 1), MALLOC);
-	if (!(data)->map_dtls)
-		print_err("Malloc failed");
-	i = 0;
-	while ((data)->data_map[i])
-	{
-		if (!valid_letter((data)->data_map[i]))
-			(data)->map_dtls[j++] = ft_strdup((data)->data_map[i]);
-		i++;
-	}
-	data->map_dtls[j] = NULL;
 	return (0);
 }
 
@@ -97,13 +68,15 @@ void	handle_color(char *color, char type, t_data **data)
 {
 	t_var	var;
 
-	(1) && (var.tmp = NULL, var.i = 0, var.r = 0, var.g = 0, var.b = 0);
+	(1) && (var.tmp = NULL, var.i = -1, var.r = 0, var.g = 0, var.b = 0);
 	sc(color, var);
 	var.tmp = ft_split(color, ',');
 	if (!var.tmp)
 		print_err("Invalid color");
 	while (var.tmp[++var.i])
 	{
+		if (ft_strlen(var.tmp[var.i]) > 3)
+			print_err("Invalid color");
 		if (is_alpha(var.tmp[var.i]))
 			print_err("Invalid color");
 		if (var.i == 0)

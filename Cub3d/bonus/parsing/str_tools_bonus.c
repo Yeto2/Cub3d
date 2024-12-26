@@ -1,36 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   str_tools_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 19:55:52 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 00:30:44 by yessemna         ###   ########.fr       */
+/*   Created: 2024/12/26 04:32:26 by yessemna          #+#    #+#             */
+/*   Updated: 2024/12/26 04:32:34 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_strcut(char *str, char *cut)
 {
-	size_t	i;
-	char	*str;
-	size_t	slen ;
+	int	i;
+	int	j;
 
 	i = 0;
-	if (!s)
-		return (0);
-	slen = ft_strlen(s);
-	if (start > slen)
-		return (ft_calloc(1, 1));
-	if (len >= slen - start)
-		len = slen - start;
-	str = (char *)g_malloc(sizeof(char) * len + 1, MALLOC);
-	if (!str)
-		return (0);
-	while (len--)
-		str[i++] = s[start++];
+	j = 0;
+	while (str[i])
+		i++;
+	while (cut[j])
+	{
+		str[i] = cut[j];
+		i++;
+		j++;
+	}
 	str[i] = '\0';
-	return (str);
+}
+
+void	ft_strcpy(char *dst, const char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
 }

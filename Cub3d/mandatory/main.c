@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:55:55 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/24 23:44:18 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 06:27:26 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,19 @@ void	init_textures(t_data *data)
 	data->textures.ea = set_png_texture(data, data->ea);
 }
 
-void f()
-{
-	system("leaks cub3d");
-}
-
 int	main(int ac, char const *av[])
 {
-	t_data	data;
-	
-	atexit(f);
+	t_data		data;
+	t_fd_col	collector;
+
+	collector.count = 0;
 	if (ac != 2)
 		print_err("Error\n");
 	check_extention(av[1]);
 	data.map_path = ft_strdup(av[1]);
-	if (fill_map_data(&data))
+	if (fill_map_data(&data, &collector))
 		return (ft_printf("Error\n"), 1);
+	close_all_fds(&collector);
 	if (check_if_valid(&data))
 		return (ft_printf("Error\n"), 1);
 	if (prepare_data(&data))

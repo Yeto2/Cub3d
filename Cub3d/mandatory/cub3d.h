@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 15:18:32 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/26 06:59:17 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,12 @@ typedef struct s_render_var
 	int				color;
 }	t_render_var;
 
+typedef struct s_fd_col
+{
+	int	fds[OPEN_MAX];
+	int	count;
+}	t_fd_col;
+
 // parsing
 uint32_t		get_coller(int r, int g, int b, int a);
 mlx_texture_t	*set_png_texture(t_data *data, char *path);
@@ -156,12 +162,12 @@ mlx_texture_t	*return_texture(t_data *data, t_textures *textures, double ray);
 void			init_data_vars(t_data **data);
 void			check_extention(const char *file);
 void			handle_color(char *color, char type, t_data **data);
-int				fill_map_data(t_data *data);
+int				fill_map_data(t_data *data, t_fd_col *collector);
 int				skip_spc_check(char *line);
 int				valid_letter(char *line);
 int				check_if_valid(t_data *data);
 int				prepare_data(t_data *data);
-int				count_lines(t_data *data);
+int				count_lines(t_data *data, t_fd_col *collector);
 int				wsnecf10(char c);
 int				dir(char c);
 char			*join_char(char *str, char c);
@@ -195,13 +201,8 @@ char			*ft_itoa(int n);
 void			load_weapon_images(t_data *data);
 int				is_alpha(char *c);
 void			terminate_mlx(t_data *data);
+int				prepare_data(t_data *data);
 // ft_open
-
-typedef struct s_fd_col
-{
-	int	fds[OPEN_MAX];
-	int	count;
-}	t_fd_col;
 
 void			init_fd_collector(t_fd_col *collector);
 int				ft_open(t_fd_col *collector,

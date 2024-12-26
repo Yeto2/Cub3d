@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 08:55:52 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/19 22:16:39 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/26 06:14:49 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	check_extention(const char *file)
 		print_err("Error\n");
 }
 
-int	count_lines(t_data *data)
+int	count_lines(t_data *data, t_fd_col *collector)
 {
 	char	*line;
 	int		fd;
 	int		i;
 
 	i = 0;
-	fd = open(data->map_path, O_RDONLY, 0666);
+	fd = ft_open(collector, data->map_path, O_RDONLY, 0666);
 	if (fd == -1)
 		print_err("Error\n");
 	line = get_next_line(fd);

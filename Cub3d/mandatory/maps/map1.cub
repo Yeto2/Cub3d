@@ -5,12 +5,11 @@ WE     ./mandatory/images/walls/w.png
 EA ./mandatory/images/walls/e.png
 
 C 140,100,0
-F                          40,70,70
+F                          40,70,100
 
 
            NO ./mandatory/images/walls/n.png
 
-         
 
 11111111111111111111111111111111111
 10000000000100000000000000000000111
