@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
+#    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/12/27 08:55:24 by yessemna         ###   ########.fr        #
+#    Updated: 2024/12/27 09:24:17 by lamhal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude
-MLX_LIB = /Users/$(USER)/Desktop/Cub3d/MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
+MLX_LIB = ../MLX42/build/libmlx42.a -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 OBJ_DIR = obj
 MANDATORY = mandatory
 BONUS = bonus
@@ -69,17 +69,17 @@ $(BONUS)/%.o: $(BONUS)/%.c $(BONUS)/cub3d_bonus.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD):
-	@if [ ! -d /Users/$(USER)/Desktop/Cub3d/MLX42/build ]; then \
-		(cd /Users/$(USER)/Desktop/Cub3d/MLX42 && cmake -B build);\
+	@if [ ! -d ../MLX42/build ]; then \
+		(cd ..//MLX42 && cmake -B build);\
 	fi
-	@make -C /Users/$(USER)/Desktop/Cub3d/MLX42/build
+	@make -C ../MLX42/build
 
 clean:
 	@rm -rf $(OBJ) $(OBJ_B)
 
 fclean: clean
 	@rm -f $(NAME) $(NAME_BONUS)
-	@rm -rf /Users/$(USER)/Desktop/Cub3d/MLX42/build
+	@rm -rf ../MLX42/build
 
 re: fclean all
 
