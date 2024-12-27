@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:35:01 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 07:17:43 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/27 07:04:49 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ void	handle_color(char *color, char type, t_data **data)
 		print_err("Invalid color");
 	while (var.tmp[++var.i])
 	{
-		if (ft_strlen(var.tmp[var.i]) > 3)
-			print_err("Invalid color");
-		if (is_alpha(var.tmp[var.i]))
-			print_err("Invalid color");
+		h_c_err(var.tmp[var.i]);
 		if (var.i == 0)
 			var.r = ft_atoi(var.tmp[var.i]);
 		else if (var.i == 1)

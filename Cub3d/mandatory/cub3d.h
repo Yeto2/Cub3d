@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 09:31:19 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/27 07:10:11 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ void			load_weapon_images(t_data *data);
 int				is_alpha(char *c);
 void			terminate_mlx(t_data *data);
 int				prepare_data(t_data *data);
+void			h_c_err(char *str);
 // ft_open
 
 void			init_fd_collector(t_fd_col *collector);

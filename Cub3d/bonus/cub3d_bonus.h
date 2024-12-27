@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:18:35 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 09:31:08 by lamhal           ###   ########.fr       */
+/*   Updated: 2024/12/27 07:24:32 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ typedef struct s_data
 	t_pos			dor_pos;
 	void			**pl_imgs;
 	int				current_frame;
-	int				abe_mouse;
 }	t_data;
 
 typedef struct s_list
@@ -220,6 +219,7 @@ char			*ft_itoa(int n);
 void			load_weapon_images(t_data *data);
 int				is_alpha(char *c);
 void			terminate_mlx(t_data *data);
+void			h_c_err(char *str);
 // char			*trim_first_last(char *str);
 //player
 

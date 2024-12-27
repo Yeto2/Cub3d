@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 04:32:26 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 04:32:34 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/27 07:05:00 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,12 @@ void	ft_strcpy(char *dst, const char *src)
 		i++;
 	}
 	dst[i] = '\0';
+}
+
+void	h_c_err(char *str)
+{
+	if (ft_strlen(str) > 3)
+		print_err("Invalid color");
+	if (is_alpha(str))
+		print_err("Invalid color");
 }

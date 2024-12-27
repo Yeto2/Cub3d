@@ -4,7 +4,7 @@ WE     ./bonus/images/walls/w.png
 
 EA ./bonus/images/walls/e.png
 
-C 140,100,0
+C 140,100,50
 F                          40,70,100
 
 

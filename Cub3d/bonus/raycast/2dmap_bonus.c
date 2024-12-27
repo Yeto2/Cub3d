@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/26 07:19:26 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/27 07:24:39 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,6 @@ void	move_mouse(double xpos, double ypos, void *d)
 	data = d;
 	(void)xpos;
 	(void)ypos;
-	if (mlx_is_key_down(data->mlx.mlx_p, MLX_KEY_M))
-	{
-		if (data->abe_mouse == 1)
-			data->abe_mouse = 0;
-		else
-			data->abe_mouse = 1;
-	}
-	if (data->abe_mouse == 0)
-	{
-		return ;
-	}
 	mlx_get_mouse_pos(data->mlx.mlx_p, &mouse_x, &mouse_y);
 	move_mouse = mouse_x - mouse_x_old;
 	data->ang += (double)(move_mouse) *0.001;
@@ -68,7 +57,6 @@ void	start_game(t_data *data)
 	data->scale = 20;
 	data->unite = data->scale / TILE_SIZE;
 	data->dor_open = 0;
-	data->abe_mouse = 1;
 	clear_image(data);
 	ray_cast(data);
 	render_2d_map(data);

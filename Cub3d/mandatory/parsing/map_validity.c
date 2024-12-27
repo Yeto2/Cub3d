@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:05:49 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/25 06:05:51 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/27 07:09:52 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,12 @@ int	check_map_validity(t_data **data)
 	if (is_zero_surrounded(data))
 		return (1);
 	return (0);
+}
+
+void	h_c_err(char *str)
+{
+	if (ft_strlen(str) > 3)
+		print_err("Invalid color");
+	if (is_alpha(str))
+		print_err("Invalid color");
 }
