@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 08:55:52 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 06:14:49 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/29 12:18:28 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_extention(const char *file)
 		i++;
 	if (file[i - 1] != 'b' || file[i - 2] != 'u'
 		|| file[i - 3] != 'c' || file[i - 4] != '.')
-		print_err("Error\n");
+		print_err("Error\n Invalid file extention\n");
 }
 
 int	count_lines(t_data *data, t_fd_col *collector)

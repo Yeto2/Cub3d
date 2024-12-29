@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:02:22 by lamhal            #+#    #+#             */
-/*   Updated: 2024/12/27 07:24:39 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/29 15:15:04 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	start_game(t_data *data)
 	mlx_image_to_window(data->mlx.mlx_p, data->mlx.img_m, 10, 10);
 	data->default_img = mlx_texture_to_image(data->mlx.mlx_p,
 			data->pl_txt);
-	mlx_image_to_window(data->mlx.mlx_p, data->default_img, 80, 40);
+	mlx_image_to_window(data->mlx.mlx_p, data->default_img,
+		(S_W / 2) - (1021 / 2), S_H - 766);
 	mlx_cursor_hook(data->mlx.mlx_p, move_mouse, data);
 	mlx_loop_hook(data->mlx.mlx_p, pl_animation, data);
 	mlx_loop_hook(data->mlx.mlx_p, handell_keys, data);

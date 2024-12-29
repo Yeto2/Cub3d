@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:17:54 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 06:43:23 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/29 12:27:42 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	fill_map_data(t_data *data, t_fd_col *collector)
 	i = 0;
 	fd = ft_open(collector, (data)->map_path, O_RDONLY, 0666);
 	if (fd == -1)
-		print_err("cannot open rhe map file");
+		print_err("cannot open the map file");
 	(data)->data_map = g_malloc(sizeof(char *) * (count_lines(data,
 					collector) + 1), MALLOC);
 	if (!(data)->data_map)

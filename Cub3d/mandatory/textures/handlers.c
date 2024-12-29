@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 23:32:11 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 00:32:56 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/29 13:37:49 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ mlx_texture_t	*set_png_texture(t_data *data, char *path)
 {
 	mlx_texture_t	*texture;
 
+	(void)data;
 	texture = mlx_load_png(path);
 	if (texture == NULL)
-	{
-		terminate_mlx(data);
 		print_err("Error\nfaild to load png");
-	}
 	return (texture);
 }
 

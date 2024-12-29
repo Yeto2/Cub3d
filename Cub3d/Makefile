@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lamhal <lamhal@student.42.fr>              +#+  +:+       +#+         #
+#    By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:59:05 by yessemna          #+#    #+#              #
-#    Updated: 2024/12/27 09:24:17 by lamhal           ###   ########.fr        #
+#    Updated: 2024/12/29 14:27:07 by yessemna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ OBJ_DIR = obj
 MANDATORY = mandatory
 BONUS = bonus
 BUILD = MLX42/build
-NAME = cub3d
-NAME_BONUS=cub3d_bonus
+NAME = cub3D
+NAME_BONUS=cub3D_bonus
 
 SRC = $(MANDATORY)/main.c $(MANDATORY)/utils/ft_split.c $(MANDATORY)/utils/get_next_line.c $(MANDATORY)/utils/ft_strcmp.c \
 		$(MANDATORY)/utils/ft_strlen.c $(MANDATORY)/utils/ft_itoa.c $(MANDATORY)/utils/ft_isalpha.c $(MANDATORY)/utils/ft_strncmp.c $(MANDATORY)/utils/ft_substr.c \
@@ -70,7 +70,7 @@ $(BONUS)/%.o: $(BONUS)/%.c $(BONUS)/cub3d_bonus.h
 
 $(BUILD):
 	@if [ ! -d ../MLX42/build ]; then \
-		(cd ..//MLX42 && cmake -B build);\
+		(cd ../MLX42 && cmake -B build);\
 	fi
 	@make -C ../MLX42/build
 

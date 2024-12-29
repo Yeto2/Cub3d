@@ -6,7 +6,7 @@
 /*   By: yessemna <yessemna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:33:17 by yessemna          #+#    #+#             */
-/*   Updated: 2024/12/26 04:31:17 by yessemna         ###   ########.fr       */
+/*   Updated: 2024/12/29 15:15:24 by yessemna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	display_pl_images(t_data *data, int i)
 	if (!data->tmp_img)
 		terminate_mlx(data);
 	rm_img = data->tmp_img;
-	mlx_image_to_window(data->mlx.mlx_p, data->tmp_img, 80, 40);
+	mlx_image_to_window(data->mlx.mlx_p, data->tmp_img,
+		(S_W / 2) - (1021 / 2), S_H - 766);
 }
 
 void	pl_animation(void *arg)
